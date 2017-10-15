@@ -1,0 +1,19 @@
+	git add . 		添加到本地缓存
+	git commit -m "备注"	提交到本地仓库
+	git push 		提交到远程仓库
+
+
+在本地删除了文件，如何同步到远程仓库
+
+	rm test 
+	git add -u
+	git commit -m "delete test"
+	git push origin
+
+git add 表示 add to index only files created or modified and not those deleted
+git add 只将新建的或者已更改的文件添加到索引区。（不会添加删除的文件）
+
+git add -u  这个命令的意思是 add to index only files modified or deleted and not those created
+只会处理已修改或者已删除的文件，但是不会处理新建的文件
+
+
