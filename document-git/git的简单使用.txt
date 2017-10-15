@@ -1,19 +1,20 @@
-	git add . 		Ìí¼Óµ½±¾µØ»º´æ
-	git commit -m "±¸×¢"	Ìá½»µ½±¾µØ²Ö¿â
-	git push 		Ìá½»µ½Ô¶³Ì²Ö¿â
+	git add . 		æ·»åŠ åˆ°æœ¬åœ°ç¼“å­˜
+	git commit -m "å¤‡æ³¨"	æäº¤åˆ°æœ¬åœ°ä»“åº“
+	git push 		æäº¤åˆ°è¿œç¨‹ä»“åº“
 
 
-ÔÚ±¾µØÉ¾³ıÁËÎÄ¼ş£¬ÈçºÎÍ¬²½µ½Ô¶³Ì²Ö¿â
+åœ¨æœ¬åœ°åˆ é™¤äº†æ–‡ä»¶ï¼Œå¦‚ä½•åŒæ­¥åˆ°è¿œç¨‹ä»“åº“
 
 	rm test 
 	git add -u
 	git commit -m "delete test"
 	git push origin
 
-git add ±íÊ¾ add to index only files created or modified and not those deleted
-git add Ö»½«ĞÂ½¨µÄ»òÕßÒÑ¸ü¸ÄµÄÎÄ¼şÌí¼Óµ½Ë÷ÒıÇø¡££¨²»»áÌí¼ÓÉ¾³ıµÄÎÄ¼ş£©
+git add è¡¨ç¤º add to index only files created or modified and not those deleted
+git add åªå°†æ–°å»ºçš„æˆ–è€…å·²æ›´æ”¹çš„æ–‡ä»¶æ·»åŠ åˆ°ç´¢å¼•åŒºã€‚ï¼ˆä¸ä¼šæ·»åŠ åˆ é™¤çš„æ–‡ä»¶ï¼‰
 
-git add -u  Õâ¸öÃüÁîµÄÒâË¼ÊÇ add to index only files modified or deleted and not those created
-Ö»»á´¦ÀíÒÑĞŞ¸Ä»òÕßÒÑÉ¾³ıµÄÎÄ¼ş£¬µ«ÊÇ²»»á´¦ÀíĞÂ½¨µÄÎÄ¼ş
+git add -u  è¿™ä¸ªå‘½ä»¤çš„æ„æ€æ˜¯ add to index only files modified or deleted and not those created
+åªä¼šå¤„ç†å·²ä¿®æ”¹æˆ–è€…å·²åˆ é™¤çš„æ–‡ä»¶ï¼Œä½†æ˜¯ä¸ä¼šå¤„ç†æ–°å»ºçš„æ–‡ä»¶
 
 
+http://www.jianshu.com/p/45ef8508a646 å‚è€ƒé“¾æ¥
