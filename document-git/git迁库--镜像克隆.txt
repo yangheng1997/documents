@@ -1,12 +1,19 @@
+注意， 一定要在旧服务器，新服务器都上传 ssh_key。 不然无法clone mirror , push mirror
+
 镜像克隆：
 	git clone --mirror  https://github.com/../old.git old.git
 	cd old.git
 	
+
+
+在新服务器上创建版本库。
+
 然后推送镜像：
-	git remote set-url --push origin git@gitcafe.com/.../new.git
+	git remote set-url --push origin git@gitcafe.com/.../new.git		改为新服务器的git仓库地址
 	git push --mirror
 	
 或者推送新建remote再推送：
 	git remote add mirror origin git@gitcafe.com/.../new.git
 	git push mirror --all
 	git push mirror --tags
+
