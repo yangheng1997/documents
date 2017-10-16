@@ -1,0 +1,18 @@
+配置iptables 
+执行命令
+	iptables -A INPUT -p tcp -dport 22 -j ACCETP
+	iptables -A OUTPUT -p tcp -sport 22 -j ACCETP
+			开放22端口。保证ssh连接能正常使用
+
+	service iptables save			保存规则
+
+	iptables -A INPUT -p tcp -dport 8443 -j ACCETP
+	iptables -A OUTPUT -p tcp -sport 8443 -j ACCETP
+			开放gitblit的8443端口。 
+
+	service iptables save 
+
+	iptables -P INPUT DROP
+	iptables -P OUTPUT DROP
+	iptables -P FORWARD DROP
+			将其他端口都禁止
