@@ -1,0 +1,223 @@
+Nginx是一款高性能的
+		http 服务器
+		反向代理服务器
+		电子邮件（IMAP/POP3）代理服务器。
+
+	应用场景：
+		http 服务器：		网页静态服务器
+
+		虚拟主机：		实现一台服务器虚拟出多个网站
+
+		反向代理，负载均衡：	当网站的访问量达到一定程度后，单台服务器不能满足用户的请求时，
+					需要用多台服务器集群可以使用nginx做反向代理。并且多台服务器可
+					以平均分担负载，不会因为某台服务器负载高宕机而某台服务器闲置的情况。
+
+安装
+
+	1，安装环境
+		gcc环境			yum install gcc-c++
+		
+		第三方库		yum install -y pcre pcre-devel
+					yum install -y zlib zlib-devel
+					yum install -y openssl openssl-devel
+
+	2, 安装
+
+		解压
+			 tar zxf nginx-1.8.0.tar.gz 
+		使用configure命令创建一makeFile文件。
+			./configure \
+			--prefix=/usr/local/nginx \
+			--pid-path=/var/run/nginx/nginx.pid \
+			--lock-path=/var/lock/nginx.lock \
+			--error-log-path=/var/log/nginx/error.log \
+			--http-log-path=/var/log/nginx/access.log \
+			--with-http_gzip_static_module \
+			--http-client-body-temp-path=/var/temp/nginx/client \
+			--http-proxy-temp-path=/var/temp/nginx/proxy \
+			--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \
+			--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \
+			--http-scgi-temp-path=/var/temp/nginx/scgi
+
+	
+		启动nginx之前，上边将临时文件目录指定为/var/temp/nginx，需要在/var下创建temp及nginx目录
+			mkdir /var/temp/nginx/client -p
+			
+
+ 		正式安装 
+			make
+			make install
+
+启动，停止
+		
+		进入sbin目录	
+			./nginx
+			./nginx -s stop
+			./nginx -s reload
+			
+			
+			
+访问 
+		默认80端口，直接访问ip地址
+		需要关闭防火墙
+		
+
+		
+配置虚拟主机
+	通过修改配置文件
+		/usr/local/nginx/conf/nginx.conf
+	来配置虚拟主机
+
+	1，通过端口区分不同虚拟主机
+			
+			
+			
+	server {				//一个server 节点就是一个虚拟主机
+        listen       80;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html;	//html 是nginx 安装目录下的 html目录。
+			
+            index  index.html index.htm;
+        }
+	}
+	
+	添加虚拟主机
+		
+	server {				//不同的端口指向不同的html文件
+        listen       81;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html-81;
+            index  index.html index.htm;
+        }
+    }
+	
+			
+			
+			
+	2，通过域名区分虚拟主机	
+			修改hosts 文件，是不同的域名都对应nginx服务器的ip 用来测试。 可以使用工具switchHosts
+			
+	server {				//同一端口，域名不同，指向的html文件不同
+        listen       80;
+        server_name  www.taobao.com;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html-taobao;
+            index  index.html index.htm;
+        }
+    }
+    server {
+        listen       80;
+        server_name  www.baidu.com;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html-baidu;
+            index  index.html index.htm;
+        }
+    }
+
+			
+			
+
+反向代理服务器
+
+			客户端 -->   正向代理	--> 	internet   -->		反向代理	--> 网站
+		
+		反向代理服务器决定哪台服务器提供服务。	
+		返向代理服务器不提供服务器。也是请求的转发。	
+		
+	NGINX实现反向代理
+	
+		两个域名指向同一台nginx服务器，用户访问不同的域名显示不同的网页内容。
+		
+
+		第一步：安装两个tomcat，分别运行在8080和8081端口。
+		第二步：启动两个tomcat。
+		第三步：反向代理服务器的配置
+
+			
+	upstream tomcat1 {
+		server 192.168.25.148:8080;
+    }
+    server {
+        listen       80;
+        server_name  www.sina.com.cn;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            proxy_pass   http://tomcat1;
+            index  index.html index.htm;
+        }
+    }
+    upstream tomcat2 {
+		server 192.168.25.148:8081;
+    }
+    server {
+        listen       80;
+        server_name  www.sohu.com;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            proxy_pass   http://tomcat2;
+            index  index.html index.htm;
+        }
+    }
+
+			
+	第四步：nginx重新加载配置文件
+	第五步：配置域名
+	在hosts文件中添加域名和ip的映射关系
+		192.168.25.148 www.sina.com.cn
+		192.168.25.148 www.sohu.com
+		
+		
+负载均衡：
+			
+	如果一个服务由多条服务器提供，需要把负载分配到不同的服务器处理，需要负载均衡。
+ upstream tomcat2 {
+	server 192.168.25.148:8081;
+	server 192.168.25.148:8082;
+  }
+
+
+  可以根据服务器的实际情况调整服务器权重。权重越高分配的请求越多，权重越低，请求越少。默认是都是1
+ upstream tomcat2 {
+	server 192.168.25.148:8081;
+	server 192.168.25.148:8082 weight=2;
+    }
+
+	
+	
+			
+			
+			
+			
+			
+
+
