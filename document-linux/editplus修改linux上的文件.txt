@@ -1,0 +1,10 @@
+file -> ftp -> ftp Settings			配置ftp连接
+		description			描述
+		FTP server			ftp服务器
+			账号 密码
+			
+在菜单栏的Directory(目录)		菜单  选择 ftp
+			
+			
+			
+
