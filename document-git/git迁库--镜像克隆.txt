@@ -1,0 +1,12 @@
+镜像克隆：
+	git clone --mirror  https://github.com/../old.git old.git
+	cd old.git
+	
+然后推送镜像：
+	git remote set-url --push origin git@gitcafe.com/.../new.git
+	git push --mirror
+	
+或者推送新建remote再推送：
+	git remote add mirror origin git@gitcafe.com/.../new.git
+	git push mirror --all
+	git push mirror --tags
