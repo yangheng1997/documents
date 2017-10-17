@@ -1,0 +1,19 @@
+克隆虚拟机
+
+	克隆后网络会不能用
+	解决方法
+
+	1，在/etc/sysconfig/network-scripts/ifcfg-eth0中
+		删除WADDR项 ，将uuid更改一下	
+		vim /etc/sysconfig/network-scripts/ifcfg-eth0
+
+	2,删除 /etc/udev/rules.d/70-persistent-net.rules 文件。然后重启。
+		
+
+	3，在新生成的/etc/udev/rules.d/70-persistent-net.rules文件中。
+	将HWADDR复制到	ifcfg-eth0中，并配置ip、网关。然后重启
+
+	
+	
+	
+					
