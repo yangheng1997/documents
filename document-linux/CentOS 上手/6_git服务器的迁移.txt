@@ -1,0 +1,71 @@
+操作理念
+	创建git用户，在git用户下安装gitblit。 通过gitblit创建git仓库，通过git命令进行git仓库的迁移
+	
+1:在 git 用户下 安装gitblit	
+	1.1 安装jdk 安装git 
+		因为安装的git的位置是在/usr/local/git下，不是默认路径 所以可能需要创建软连接
+		ln -s /usr/local/git/bin/git-upload-pack /usr/bin/git-upload-pack  
+		
+	
+	2.2 新建用户用户组
+	root用户安装
+		# groupadd git
+		# useradd -r -ggit git
+	
+	2.3 使用git用户登录、并上传软件包	  这个git的安装方式没有试过
+	
+		2.3.1	git安装
+		yum install -y gcc-c++ curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel 
+		
+		解压git-2.9.3.tar.gz
+		# tar -zxvf  git-2.9.3.tar.gz
+		安装git
+		# cd git-2.9.3
+		# make prefix = /home/git all
+		# make prefix = /home/git install
+
+	2.4 gitblit安装
+		# tar -zxvf gitblit-1.8.0.tar.gz
+		# cd  gitblit-1.8.0/data
+		在gitblit.properties中重新设置参数（详细参数可参考defaults.properties，也可在defaults.properties直接设置参数）
+			server.httpPort = 7070
+
+			server.httpsPort = 7071
+	2.5配置服务
+	root用户操作
+		修改service-centos.sh中的参数路径，改为自己gitblit所在的目录路径
+			GITBLIT_PATH=/home/git/gitblit-1.8.0
+			GITBLIT_BASE_FOLDER=/home/git/gitblit-1.8.0/data
+			GITBLIT_HTTP_PORT=7070
+			GITBLIT_HTTPS_PORT=7071
+			GITBLIT_LOG=/home/git/gitblit-1.8.0/gitblit.log
+
+		# cd  gitblit-1.8.0
+		# cp service-centos.sh /etc/init.d/gitblit
+		# chkconfig --add gitblit
+	2.6启动gitblit
+		手动启动（注意gitblit.jar ， data的路径）
+		# cd gitblit-1.8.0
+		# java -jar gitblit.jar --baseFolder data
+		
+		如果使用任务查看器发现java -jar gitblit.jar --baseFolder data ，则服务启动成功
+		ps -ef | grep gitblit
+		
+		
+		service命令启动
+		#service gitblit start
+		Starting gitblit (via systemctl):                          [  OK  ]
+		显示如此，则服务启动成功
+		
+	2.7开放端口
+		# firewall-cmd --zone=public --add-port=7070/tcp --permanent
+		# firewall-cmd --zone=public --add-port=7071/tcp --permanent
+		# firewall-cmd --reload
+	2.8登录
+		在浏览器中输入地址：http://192.168.*.*:7070（请根据自己的ip）
+		初始账号密码 admin/admin
+		
+参考地址
+http://blog.csdn.net/u012606648/article/details/52514745
+		
+2； 采用git命令进行git仓库的迁移

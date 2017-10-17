@@ -1,0 +1,5 @@
+vi /etc/ssh/sshd_config
+将PermitRootLogin的值改成no
+
+重启sshd 
+service sshd restart

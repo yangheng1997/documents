@@ -1,0 +1,15 @@
+1，	配置网络
+2，	yum update 更新系统组件
+3，	统一用户		appuser	rootroot
+4,	关闭root用户的远程访问    修改sshd_conf文件
+5,	使用iptables替换SElinux 
+		关闭SElinux 并设置iptables为自启动，并配置放行规则
+
+6,	安装oracle客户端
+		sqlplus 导入 导出
+
+7,	安装java常用服务			
+		jdk.maven.tomcat.git
+
+
+

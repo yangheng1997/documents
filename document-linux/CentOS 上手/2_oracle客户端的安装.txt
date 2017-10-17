@@ -1,0 +1,57 @@
+oracle客户端的安装
+useradd oracle
+passwd 	oracle
+		ZGC@ws18
+		
+1,上传文件到/home/oracle下
+2,切换到oracle用户 ，解压
+		解压的文件有
+			instantclient-basic-linux.x64-11.2.0.4.0
+			instantclient-jdbc-linux.x64-11.2.0.4.0
+			instantclient-odbc-linux.x64-11.2.0.4.0
+			instantclient-sdk-linux.x64-11.2.0.4.0
+			instantclient-tools-linux.x64-11.2.0.4.0
+			instantclient-sqlplus-linux.x64-11.2.0.4.0
+			
+3,		在instantclient_11_2中添加tnsnames.ora文件
+ljyh =
+	(DESCRIPTION =
+		(ADDRESS = (PROTOCOL = TCP)(HOST = 10.55.15.244)(PORT = 1521)) #需要连接的IP,端口
+		(CONNECT_DATA =
+			(SERVER = DEDICATED)
+			(SERVICE_NAME = ljyh) #需要连接的实例
+		)
+	)
+EXTPROC_CONNECTION_DATA =
+	(DESCRIPTION =
+		(ADDRESS_LIST =
+			(ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC1))
+		)
+		(CONNECT_DATA =
+			(SID = PLSExtProc)
+			(PRESENTATION = RO)
+		)
+	)
+				
+4,在oracle账户下的.bash_profile 添加环境变量
+			export NLS_LANG=AMERICAN_AMERICA.ZHS16GBK
+			export ORACLE_IC_HOME=/home/oracle/instantclient_11_2
+			export ORACLE_HOME=$ORACLE_IC_HOME
+			export TNS_ADMIN=$ORACLE_IC_HOME
+			export PATH=$PATH:$HOME/bin:$ORACLE_IC_HOME
+			export LD_LIBRARY_PATH=$ORACLE_IC_HOME:/usr/lib
+	
+	测试sqlplus 可以使用   oracle用户可以在任意目录下调起sqlplus,  其他用户不可以
+	
+	
+5,设置 exp imp 
+		从10.100.1.55服务器的/home/oracle/app/oracle/product/11g/home/bin 目录下得到exp,imp 文件
+		放置在 /home/oracle/instantclient_11_2 下。
+		使用oracle用户调用exp , imp 。 提示权限不足，
+		执行命令
+			chmod +x /home/oracle/instantclient_11_2/exp
+			chmod +x /home/oracle/instantclient_11_2/imp
+		赋予权限。 如果使用oracle用户赋权失败，切换到root用户执行。 
+		我是oracle赋权失败然后在root赋权的
+		
+6,测试。 oracle用户可以在任意目录下调起sqlplus,exp,imp 功能
