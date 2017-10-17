@@ -1,18 +1,43 @@
 配置iptables 
-执行命令
-	iptables -A INPUT -p tcp -dport 22 -j ACCETP
-	iptables -A OUTPUT -p tcp -sport 22 -j ACCETP
-			开放22端口。保证ssh连接能正常使用
 
-	service iptables save			保存规则
+		iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT			#允许本地回环接口(即运行本机访问本机) 
+		iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT	#允许已建立的或相关连的通行 
+		iptables -A OUTPUT -j ACCEPT			#允许所有本机向外的访问 
+		iptables -A INPUT -p tcp --dport 22 -j ACCEPT	#允许访问22端口
 
-	iptables -A INPUT -p tcp -dport 8443 -j ACCETP
-	iptables -A OUTPUT -p tcp -sport 8443 -j ACCETP
-			开放gitblit的8443端口。 
+		iptables -A INPUT -j REJECT			#禁止其他未允许的规则访问 
+		iptables -A FORWARD -j REJECT			#禁止其他未允许的规则访问
 
-	service iptables save 
+		
+		service iptables save			#保存，将添加的规则保存。
+		service iptables restart		#重启，将以保存的规则应用。
 
-	iptables -P INPUT DROP
-	iptables -P OUTPUT DROP
-	iptables -P FORWARD DROP
-			将其他端口都禁止
+			
+		
+
+	一定要先配置22端口的开放， 22端口是远程ssh登陆的端口，一定要先开放22端口然后再禁止其他未允许的规则访问。
+
+		在禁止其他为允许的端口后，如果再添加规则 需要删除这两个规则	iptables -A INPUT -j REJECT
+										iptables -A FORWARD -j REJECT
+		因为他们会禁止其他规则的添加
+
+		操作
+			srevice iptables status		获取规则的编号
+			iptables -D	INPUT	1	删除INPUT中编号为1的规则
+			iptables -D	FORWARD 1	删除FORWARD中编号为1的规则	要删除 target 为 REJECT的规则。
+		
+		然后，才可以添加规则。
+		添加后规则记得重新禁用所有未允许的端口
+
+
+		iptables -A INPUT -p tcp --dport 80 -j ACCEPT		 #允许访问80端口 
+		iptables -A INPUT -p tcp --dport 21 -j ACCEPT		 #允许ftp服务的21端口 
+		iptables -A INPUT -p tcp --dport 20 -j ACCEPT		 #允许FTP服务的20端口
+		iptables -A INPUT -p tcp --dport 8080 -j ACCEPT		 #允许访问8080端口
+
+		iptables -A INPUT -j  REJECT
+		iptables -A FORWARD -j REJECT
+
+
+		service iptables save
+		service iptables restart
