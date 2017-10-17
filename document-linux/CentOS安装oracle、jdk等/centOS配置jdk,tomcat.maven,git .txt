@@ -1,0 +1,93 @@
+JDK的配置
+	安裝版本：		jdk7u9。 1.7.0_09
+	安装目录:		/usr/java 
+	环境变量：
+			export JAVA_HOME=/usr/java/jdk1.7.0_09
+			export JRE_HOME=$JAVA_HOME/jre
+			export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+			export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+			
+			export JAVA_OPTS=" -server -Xms2048m -Xmx2048m -XX:+AggressiveOpts -XX:+UseBiasedLocking -XX:PermSize=512m -XX:MaxPermSize=1024m -XX:MaxNewSize=2048m -Xshare:off -Djava.library.path=/usr/local/apr/lib "
+			
+		安装前检查有没有自带的openJDK ，并卸载
+			查询
+			#rpm -qa |grep java
+			#rpm -qa |grep jdk
+			#rpm -qa |grep gcj
+			卸载
+			rpm -e --nodeps 已安装的open jdk的名字。 
+			
+			java-1.7.0-openjdk-1.7.0.151.x86_64
+
+
+		[root@zjft apache]# java -version
+							java version "1.7.0_09"
+							Java(TM) SE Runtime Environment (build 1.7.0_09-b05)
+							Java HotSpot(TM) 64-Bit Server VM (build 23.5-b02, mixed mode)
+
+			
+MAVEN的配置
+	安裝版本:		apache-maven-3.5.0
+	安裝目录：      /home/apache/apache-maven
+	环境变量：
+			export  M2_HOME=/home/apache/apache-maven
+			export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin
+
+		[root@zjft apache]# mvn -version
+							Apache Maven 3.5.0 (ff8f5e7444045639af65f6095c62210b5713f426; 2017-04-04T03:39:06+08:00)
+							Maven home: /home/apache/apache-mven
+							Java version: 1.7.0_09, vendor: Oracle Corporation
+							Java home: /usr/java/jdk1.7.0_09/jre
+							Default locale: zh_CN, platform encoding: UTF-8
+							OS name: "linux", version: "2.6.32-431.el6.x86_64", arch: "amd64", family: "unix"
+
+							
+TOMCAT的配置
+	安装版本:		apache-tomcat-7.0.81
+	安装目录：		/home/apache/apache-tomcat-7.0.81
+
+	
+	
+GIT的配置
+	安装版本：		git-2.5.0
+	安装包存放目录：/usr/src
+	安装目录：		/usr/local/git
+	环境变量：
+				vim /etc/profile
+				export PATH=$PATH:/usr/local/git/bin
+	具体步骤：
+	
+			步骤1. 安装依赖包
+			# yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
+			# yum install  gcc perl-ExtUtils-MakeMaker
+			
+			步骤2. 卸载旧的git版本（如果之前有安装rpm包）
+			# yum remove git
+			
+			步骤3. 下载&解压
+			# cd /usr/src
+			# wget https://www.kernel.org/pub/software/scm/git/git-2.5.0.tar.gz
+			# tar -zxvf git-2.5.0.tar.gz
+			
+			
+			步骤4. 编译安装cd 
+			# cd git-2.5.0
+			# make prefix=/usr/local/git all
+			# make prefix=/usr/local/git install
+			
+			环境变量：
+			vim /etc/profile
+			# export PATH=$PATH:/usr/local/git/bin
+			# source /etc/profile
+
+			
+
+			
+			# git --version
+			git version 2.5.0			
+			
+
+oracle的配置
+
+	
+	
