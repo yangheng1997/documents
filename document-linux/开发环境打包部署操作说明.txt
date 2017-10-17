@@ -1,0 +1,34 @@
+﻿1 使用ssh客户端登录到Prosas3-server(确保prosas3-server能映射到IP:10.100.1.55,并且能访问到这台服务器）
+  用户名:apache,密码:redsnow
+2 执行命令：
+  $cd git_src/prosas
+  $git pull origin
+  如果出现文件碰撞（提交的文件版本/内容，与本地的文件修改后的内容有冲突）提示，
+  需要解决碰撞问题把有冲突的文件（主要是configure.properties文件），体检采用一下方式解决：
+  a)进入冲突文件的目录
+  b)把有冲突的文件换名（mv命令）
+  c) 回到/home/apache/git_src/prosas,重新执行git pull origin
+3 进入modules目录下的各个maven工程目录，按照如下顺序执行：
+  cas-client-core:   mvn clean;mvn install
+  prosas_framework:  mvn clean;mvn install
+  prosas_common:     mvn clean;mvn install
+  prosas_import:     mvn clean;mvn install
+  prosas_alert:      mvn clean;mvn package
+  prosas_application mvn clean;mvn package
+  prosas_license     mvn clean;mvn package
+  prosas_map         mvn clean;mvn package
+  prosas_report      mvn clean;mvn package
+  prosas_resources   mvn clean;mvn package
+  prosas_cas         mvn clean;mvn package
+4 进入/home/apache/apache-tomcat/bin目录，执行
+  $./shutdown.sh
+  停止tomcat服务（需要等一段时间，或者执行:killall -9 java,立即杀死所有的apache启动的java进程）
+5 回到/home/apache目录，执行
+  $./copy_war.sh
+  将把生成的war文件，复制到apache-tomcat/webapps下
+  如果有必要的话，清空apache-tomcat/logs下、以及apache-tomcat/work/Catalina/localhost/下的所有文件
+  $ cd /home/apache/apache-tomcat/logs ; rm -rf *
+  $ cd /home/apache/apache-tomcat/work/Catalina/localhost/ ; rm -rf *
+6 进入/home/apache/apache-tomcat/bin目录，执行
+  $./startup.sh
+  启动tomcat,并在浏览器上验证服务是否正常（需要等足够时间）
