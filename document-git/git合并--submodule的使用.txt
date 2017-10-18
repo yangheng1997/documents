@@ -1,0 +1,128 @@
+有两个部分，比较独立，自成系统。其中，有一个模块还考虑和其他小伙伴合作来搞。所以，就将这两部分抽取出来，独立成单独的项目来维护。但是，为方便查看和随时随地同步更新，正好可以使用 Git Submodule 特性。
+
+另外，还有一种场景：开发的项目使用了第三方或者公司的基础库，使用同一个版本库肯定不合适，也不现实，这时就必须使用子模块来搞。
+
+
+首先 要有一个主模块
+		git clone git@github.com:diguage/parent.git
+
+进入刚克隆下来的项目，我们来添加子模块。这里的子模块就必须从远处服务器上克隆了。另外，子模块可以放在项目的任意目录下，并且可以根据自己的需要重命名。 查看版本库的状态。
+
+		cd parent 
+
+		git status
+
+添加子模块
+		git submodule add git@github.com:diguage/child.git
+
+在查看下版本库的状态
+		
+		git status
+
+		除了刚刚添加的 child 模块外，还多了一个 .gitmodules 文件。这个文件就是用于记录子模块的路径已经远程版本库地址的地方。这两个文件处于待提交的状态。下面把这个修改提交一下。
+
+		git commit -am "增加子模块"
+
+
+提交到远程仓库
+
+		git push origin master
+
+
+
+
+
+
+
+
+更新子模块
+
+	
+	进入子模块目录后，你就当做这是一个独立的项目，可以正常进行一个普通 Git 项目所执行的任何操作。更新完正常的修改、添加任务后，把所做的修改提交，然后推送到远处版本库上。然后，如果需要记得在顶级项目中，也做一次提交，修改一下顶级项目所引用的子模块的提交日志的“指针”。
+
+
+	cd child 
+
+	git pull origin master
+
+	
+	在子模块更新后还需要在父模块中提交一次，更新信息才会提交到父模块
+
+	 这时，我们再进入到顶级项目中，查看一下项目状态：
+	 
+	 cd ..
+	 
+	 git status
+
+		这里可以看到明显的提示，在项目有一个新的提交。为什么会这样呢？其实，Git 在顶级项目中记录了一个子模块的提交日志的指针，用于保存子模块的提交日志所处的位置，以保证无论子模块是否有新的提交，在任何一个地方克隆下顶级项目时，各个子模块的记录是一致的。避免因为所引用的子模块不一致导致的潜在问题。如果我们更新了子模块，我们需要把这个最近的记录提交到版本库中，以方便和其他人协同。这也是刚刚添加完子模块后还要在顶级项目中提交一次的原因。
+
+	
+	在父模块中进行提交
+
+	git commit -am "更新子模块"
+
+	git push origin master
+
+
+
+
+
+克隆项目
+
+	克隆父项目
+	git clone git@github.com:diguage/parent.git
+
+		这时，其子项目只是一个文件夹，里面没有内容
+
+	cd parent 
+
+	git submodule update --init --recusive
+		这时，子项目中就有了东西，但是要进子项目中更改一下分支
+
+	cd child
+
+	git status
+
+	git checkout master
+
+
+克隆简单方法
+	
+	git clone --recursive git@github.com:diguage/parent.git
+		会同时更新子项目的内容。
+
+	cd parent/child
+
+	git status
+
+	git checkout master
+
+
+
+
+删除子模块
+
+	git rm child
+
+	查看状态
+
+	git status
+
+	提交信息
+
+	git commit -am "删除子模块"
+
+	git push origin master
+
+
+
+
+
+参考地址
+
+
+http://blog.csdn.net/mingzznet/article/details/53093159
+
+https://www.diguage.com/
+
+	
