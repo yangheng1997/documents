@@ -18,3 +18,13 @@ git add -u  这个命令的意思是 add to index only files modified or deleted
 
 
 http://www.jianshu.com/p/45ef8508a646 参考链接
+
+
+
+
+将本地仓库和远程仓库关联
+	git remote add origin  远程连接
+
+	推送时要使用强制推送
+	git push -u origin master
+					
