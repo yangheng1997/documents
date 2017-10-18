@@ -27,4 +27,22 @@ http://www.jianshu.com/p/45ef8508a646 参考链接
 
 	推送时要使用强制推送
 	git push -u origin master
+
+
+
+查看当前仓库的远程地址
+	git remote -v
+
+
+查看项目的当前状态 
+	git status
+
+切换分支
+
+	git checkout 分支名字		主分支是 master
 					
+
+git commit -m "xxx" 和 gitcommit -am "xxx" 的区别
+
+	git commit -am "xxx"  可以看成 git add . + git commit -m "xxx"
+
