@@ -1,4 +1,4 @@
-1、拉取另一个git项目
+1、在一个git项目中拉取另一个git项目作为子树存在（子文件夹）
 	git remote add -f documents ssh://yanghuixiang@118.144.88.200:29418/documents.git
 
 2、合并，不提交
@@ -13,3 +13,9 @@
 
 5、 更新子树的代码
 	 git pull -s subtree documents master
+
+
+
+
+http://blog.csdn.net/hudashi/article/details/7668798
+https://segmentfault.com/q/1010000007730346?_ea=1447694
