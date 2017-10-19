@@ -1,0 +1,88 @@
+1，添加子模块（引用项目）
+	想在A项目中添加一个引用项目
+
+	git submodule add 仓库地址  路径
+	
+	添加子模块后会新增 子模块路径和 .gitmodules文件
+	将信息提交到A项目的远程仓库
+
+	git add .
+	git commit -m "	add submodule cas 新引用了一个仓库叫cas ，路径也是cas"
+	git push origin 
+
+		这个提交操作是父项目A 在做的，只添加，提交，推送到A的远程仓库，和子模块无关。
+	这样，在A项目中就有子模块的引用了
+
+	
+
+2，日常使用
+
+	2.1 对子模块进行修改
+		修改后正常提交，
+
+		git add .
+		git commit -m "update xxx.txt"
+		git push origin
+
+		这样就提交到子模块的远程厂库了。 但是，这信息并没有提交到父项目
+
+		cd ..
+		git status   -----发现有新更改
+
+		git add .
+		git commit -m "add update , submodule update xxxxx"
+
+		这样，子模块的修改才会更新到父模块的远程仓库。
+
+		子模块还是相对于父模块独立的。只是添加了引用。
+
+
+	2.2 子模块有了更新，需要pull
+
+		方法一，
+			进入需要更新的子模块	执行 git pull 
+
+		 方二，
+			在父项目中	       	 执行 git submodule foreach git pull 
+			循环执行，一次更新全部子模块的内容
+
+	      子模块更新后，还要在父模块中进行提交，更新到父模块的远程仓库中。
+
+
+	     子模块和父项目都是单独的，子模块可以按正常操作，增删修改，
+	     但是，不论子模块进行了什么操作，父项目都需要将子模块的操作提交。
+
+	     在子模块看来。子父两个模块是独立的，没有关联的。
+	     在父模块看来。父包含子，是一个整体，父模块如过没有提交子模块的操作。那么，父模块的远程仓库不能有子模块已更新的信息
+
+	   
+	    
+3，clone
+		方法一，采用递归参数 --recursive
+			git clone --recursive    git链接
+				会自动去子模块的链接去下载。
+
+		方法二，先clone父项目，再初始化Submodule
+			git clone	git链接
+			
+			cd 父项目
+			
+			git submodule init	初始化子模块
+
+			git submodule update	更新子模块
+
+
+
+4，删除引用项目
+
+    删除submodule会麻烦些，仅仅删除submodule模块内容，是无法彻底从git中删除掉。还需要到git相关配置文件中删除条目。
+
+    1删除 [项目根目录/.gitmodules] 中对应的条目
+    2删除 [项目根目录/.git/config] 中对应的条目
+    3删除 [项目根目录/.git/modules] 目录下的对应的submodule文件夹
+    4执行 git rm –cached [modulename] 命令
+    5删除 submodule 模块内容
+
+  
+
+	
