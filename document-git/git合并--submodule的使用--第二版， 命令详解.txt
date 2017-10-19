@@ -48,6 +48,14 @@
 
 	      子模块更新后，还要在父模块中进行提交，更新到父模块的远程仓库中。
 
+	      pull之后可能会出现没有更新的情况，可以更新一下submodule 
+
+	       git submodule update 
+
+	       保险起见， pull 的操作是 
+	       	git submodule foreach git pull
+		git submodule foreach git update
+
 
 	     子模块和父项目都是单独的，子模块可以按正常操作，增删修改，
 	     但是，不论子模块进行了什么操作，父项目都需要将子模块的操作提交。
