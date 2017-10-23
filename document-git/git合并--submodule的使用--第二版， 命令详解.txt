@@ -62,7 +62,12 @@
 
 	     在子模块看来。子父两个模块是独立的，没有关联的。
 	     在父模块看来。父包含子，是一个整体，父模块如过没有提交子模块的操作。那么，父模块的远程仓库不能有子模块已更新的信息
-
+			
+		子项目内容更新后，需要将更新提交到父项目中。 
+		git status
+		git add .
+		git commit -m "子模块更新 "
+		git push origin 
 	   
 	    
 3，clone
@@ -95,6 +100,13 @@
     4执行 git rm –cached [modulename] 命令
     5删除 submodule 模块内容
 
+
+
+    参考地址 
+
+
+	http://blog.devtang.com/2013/05/08/git-submodule-issues/
+
   
 
-	
+	https://segmentfault.com/a/1190000003076028
