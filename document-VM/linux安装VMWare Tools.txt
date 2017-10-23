@@ -1,0 +1,16 @@
+﻿linux安装VMWare Tools
+
+1）虚拟机右键客户操作系统选择安装VMWare Tools
+2）虚拟机必须为开机状态
+3）进入虚机
+yum install perl -y
+mkdir /mnt/cdrom
+mount /dev/sr0 /mnt/cdrom
+ls   #VMwareTools-10.0.6-3560309.tar.gz
+cp /mnt/cdrom/VMwareTools-10.0.6-3560309.tar.gz /tmp
+cd /tmp
+chmod a+x VMwareTools-10.0.6-3560309.tar.gz
+tar zxf VMwareTools-10.0.6-3560309.tar.gz
+cd vmware-tools-distrib/
+./vmware-install.pl      #一路回车
+
