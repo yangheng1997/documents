@@ -46,3 +46,7 @@ git commit -m "xxx" 和 gitcommit -am "xxx" 的区别
 
 	git commit -am "xxx"  可以看成 git add . + git commit -m "xxx"
 
+
+
+
+
