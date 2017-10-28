@@ -1,0 +1,67 @@
+oracle 安装之后，需要测试使用
+
+启动oracle数据库
+	su - oracle #切换到oracle用户
+	sqlplus /nolog #进入sqlplus
+	conn / as sysdba #以超级管理员权限登录
+	startup #启动数据库实例
+	quit #退出
+	lsnrctl start #启动监听			一定要启动监听
+
+		startup参数说明：
+
+		startup #不带任何参数，启动数据库实例并打开数据库,一般选择这种启动方式
+
+		startup nomount #只启动数据库实例，不打开数据库，一般用于创建新的数据库时使用
+
+		startup mount #启动数据库实例，并加载数据库，但不打开数据库，一般用于修改数据库名称等管理时使用
+
+关闭oracle数据库
+	su - oracle #切换到oracle用户
+	lsnrctl stop #关闭监听器
+	sqlplus /nolog #进入sqlplus
+	shutdown immediate #关闭数据库实例
+	quit #退出
+
+		shutdown参数说明：
+		normal #等待所有的用户断开连接，执行命令后不允许新连接
+		immediate #等待用户完成当前的语句后，再断开用户连接，不允许新用户连接
+		transactional #等待用户完成当前的事务后断开连接，不允许新用户连接
+		abort #强行断开连接并直接关闭数据库
+		前面三种方法不会导致数据库出错，最后一种方法非特殊状况不建议使用，
+		一般使用shutdown immediate关闭数据库
+		备注：如果执行shutdown immediate出现ORA-01012: not logged on错误
+		请先执行以下语句
+		ps -ef|grep ora_dbw0_$orcl
+		kill -9 pid #pid为进程号
+		其中orcl 是数据库的SID
+
+
+
+
+另外还有将oracle 设置为服务，设定为开机自启等功能。 
+http://www.osyunwei.com/archives/5445.html
+
+
+解锁SCOTT用户，在windows 安装oracle客户端，使用plsql进行连接
+
+1、解锁SCOTT用户
+在linux中
+	sqlplus /nolog
+	//另一种连接方式
+	sqlp\ conn sys/system@oracle10 as sysdba // sys为当前的oracle 用户 system 为该用户密码 oracle10 为SID 
+
+	conn sys/password as sysdba; 
+	alter user soctt account lock; // 把 scott用户锁定
+	alter user scott account unlock; //把scott用户解锁
+	alter user scott identified by tiger //修改scott用户密码为 tiger,scott用户默认密码为 tiger
+
+
+在windows 安装oracle 客户端
+	下载32位直接安装，
+	然后配置 net Configuration Assistant
+	配置本地网络服务时 名字叫 Orcl
+
+
+plsql 下载绿色版，直接用
+
