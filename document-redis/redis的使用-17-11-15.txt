@@ -1,0 +1,11 @@
+1、 redis 的基本数据类型
+		String		字符串
+		List		list集合	列表
+		Hash		哈希		字典
+		Set			无序集合	集合
+		Sorted Set	有序Set集合
+		
+	
+2、常用的命令
+		flushdb		清空当前的数据库
+		keys * 		查看所有的key， *是通配符，可以组合使用

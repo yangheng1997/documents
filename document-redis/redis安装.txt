@@ -20,7 +20,7 @@
 	查看是否启动
 		1、		ps aux|grep redis
 		2、 	登录客户端 执行 ping 命令，服务端会相应pong 
-		./redis-cli 	h xxx	 		p xxx 		 password 
+		./redis-cli 	h xxx	 		p xxx 			-a  password 
 						host      		端口默认6379
 		
 		
