@@ -1,0 +1,9 @@
+<insert id="insert" parameterType="cn.e3mall.pojo.TbContentCategory" >
+  <!-- 主键返回策略   keyProperty 主键， 是pojo中的 id  返回值类型 long  执行顺序 在插入数据库之后-->
+  <selectKey keyProperty="id" resultType="long" order="AFTER">
+    	select last_insert_id()
+    </selectKey>
+	
+	
+	select last_insert_id() 根据事务，查询当前插入事务的id
+	keyProperty 就是要返回的字段， 这里选的是id , 是 parameterType 中的属性， 插入数据成功后，会将id放到这个实体类中。

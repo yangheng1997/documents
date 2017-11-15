@@ -1,0 +1,37 @@
+		redis 编译需要gcc环境
+		yum install gcc-c++ -y
+		yum install gcc -y
+
+1、上传安装包到 /home/root/ 
+2、解压 
+3、进入文件夹下 编译   make 
+4、安装	 指定安装目录	make install PREFIX=/usr/local/redis  
+		dump. rdb 文件快照
+		
+5、启动 
+		/usr/local/redis/bin/redis-server	服务端
+		/usr/local/redis/bin/redis-cli		客户端
+		
+	配置后台静默启动， 
+		1、在redis.conf 中将 daemonize 的值改为yes。并复制到bin目录下
+		2、 启动时   ./redis-server redis.conf
+		
+		
+	查看是否启动
+		1、		ps aux|grep redis
+		2、 	登录客户端 执行 ping 命令，服务端会相应pong 
+		./redis-cli 	h xxx	 		p xxx 		 password 
+						host      		端口默认6379
+		
+		
+6、关闭
+		ps aux|grep redis
+		kill pid 
+		
+		kill 等进程处理完后关闭。
+		kill -9 强制关闭。
+		
+		
+		./redis-cli shutdown 
+		
+		

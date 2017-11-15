@@ -1,0 +1,44 @@
+首先 ， 采用EasyUItree 进行操作，
+
+	实现思想、动态加载，点击当前节点去后台加载其子节点， ajax实时响应，
+	树形菜单有三个数据 id , isparent , text(name)
+	
+	1 前台js
+	
+		$("#contentCategory").tree({
+			url : '/content/category/list',	请求地址
+			animate: true,
+			method : "GET",
+			onContextMenu: function(e,node){
+				e.preventDefault();
+				$(this).tree('select',node.target);
+				$('#contentCategoryMenu').menu('show',{	 将点击的事件显示出来，
+					left: e.pageX,						坐标	e.x轴。
+					top: e.pageY								e.y轴。
+				});										将菜单显示在右键点击的位置。
+			}
+		
+		onContextMenu	事件， 上下文菜单， 
+		e				事件对应的对象，将事件封装，
+		node 			事件发生的节点。
+		select',node.target	选中节点
+		
+	2 controller
+		
+		1 提供一个handler 处理前台发来的请求。getContentCatList
+		2 使用到了注解 @RequestParam(name="id",defaultValue="0") 来关联名字不同的参数（id ， parentId）和设置默认值。
+		3 返回list<EasyUiTreeNode > 一个tree参数的封装类。 
+		
+	3 service 
+		1 定义接口在 e3-content-interface
+		2 实现功能在 e3-content-service
+		3 实现
+			1 根据 parentId 查询子节点， 使用 example查询，
+				创建example ,根据example 创建criteria 。 
+				通过 criteria.andxxxEqual(parentId).添加啊条件，
+				通过 xxxMapper.selectByExample(example);进行查询。
+				最后通过for循环，将结果集的格式转换为 List<EasyUiTreeNode>
+	
+	
+		
+		
