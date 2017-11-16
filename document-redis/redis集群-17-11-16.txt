@@ -1,0 +1,62 @@
+redis-cluster
+	特点： 没有专门的入口。每一台都是入口。每台redis 存储的数据都不同。 各个redis之间通过 ping pong机制进行连接。
+	投票容错机制   超过半数的节点投票 判断一个节点是不是出错了。所以 至少有3个节点
+	
+	
+	架构细节:
+		(1)所有的redis节点彼此互联(PING-PONG机制),内部使用二进制协议优化传输速度和带宽.
+		(2)节点的fail是通过集群中超过半数的节点检测失效时才生效.
+		(3)客户端与redis节点直连,不需要中间proxy层.客户端不需要连接集群所有节点,连接集群中任何一个可用节点即可
+		(4)redis-cluster把所有的物理节点映射到[0-16383]slot上,cluster 负责维护
+			node<->slot<->value
+		Redis 集群中内置了 16384 个哈希槽，当需要在 Redis 集群中放置一个 key-value 时，redis 先对 key 使用 crc16 算法算出一个结果，然后把结果对 16384 求余数，这样每个 key 都会对应一个编号在 0-16383 之间的哈希槽，redis 会根据节点数量大致均等的将哈希槽映射到不同的节点
+
+	Redis集群的搭建
+			Redis集群中至少应该有三个节点。要保证集群的高可用，需要每个节点有一个备份机。
+			Redis集群至少需要6台服务器。
+			搭建伪分布式。可以使用一台虚拟机运行6个redis实例。需要修改redis的端口号7001-7006
+
+			
+			1、安装ruby依赖
+					yum install ruby
+					yum install rubygems
+					
+				上传redis-3.0.0.gem 到 /home/root/目录下 并安装
+					gem install redis-3.0.0.gem
+						
+					
+			2、将/usr/local/redis/下的目录复制6份。作为6个实例。
+				(1)、 在/usr/local下创建目录 redis-cluster 
+						mkdir redis-cluster
+				(2)、复制 bin目录到 redis-cluster下，命名为reids01。
+						cp bin /usr/local/redis-cluster/redis01 -r
+				(3)、将redis01中的.rdb  .aof 文件删除。
+						rm -rf *.rdb
+						rm -rf *.aof 
+				(4)、进入redis。conf 修改端口 和开启 redis集群
+					port 改为7001 
+					cluster-enabled yes 	取消注释
+					
+				(5)、拷贝redis01  02-06 并分别修改 端口。
+				
+				(6)、配置redis服务批启动批处理脚本
+					vi redis-start-all.sh 
+					chmod u+x redis-start-all.sh	赋予本用户执行的权限
+					
+					批量关闭
+					vi redis-shutdown-all.sh 
+					chmod u+x redis-shutdown-all.sh	赋予本用户执行的权限
+				
+			
+			3、配置ruby脚本
+				进入redis源码中找到 后缀.rb的文件，拷贝到 /usr/local/redis-cluster/目录下
+					cd redis-3.0.0/src
+					ll *.rb
+					cp  redis-trib.rb /usr/local/redis-cluster/
+					
+					./redis-trib.rb create --replicas 1 192.168.25.147:7001 192.168.25.147:7002 192.168.25.147:7003 192.168.25.147:7004 192.168.25.147:7005  192.168.25.147:7006
+					给出准备的节点的id。 每个节点有一个备份机。
+					
+					ruby 脚本会自动计算， 如果节点数量不对会报错（需要是双数.在有备节点的情况下）
+					
+					

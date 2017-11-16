@@ -36,7 +36,7 @@
 			Hexists myhash field2				判断哈希表中字段的key值存不存在
 			HDEL myhash field2					删除一个或多个哈希表字段
 			Hkeys key 							获取哈希表中的所有字段的key
-			Hvals key 						获取哈希表中的所有字段的value
+			Hvals key 							获取哈希表中的所有字段的value
 			Hlen key							获取一个key中的所有字段的数量
 			Hmget key field1 [field2] 			根据给定哈希表中字段的一个或多个key值获取value ，字段key值不存在返回 nil
 			Hmset key field1 value1 [field2 value2 ]	同时将多个 field-value (域-值)对设置到哈希表 key 中。
@@ -45,4 +45,92 @@
 	List(列表)
 				left	左
 				right	右
-			Lpush runoobkey redis				从左边添加一个数据
+			Lpush list1 1 2 3 4 5 6				从左边添加元素	其排列顺序是  6 5 4 3 2 1
+			Rpush list1 a b c d e f 			从右边添加元素 	其排列顺序是  a b c d e f
+			Lrange list1 0 -1 					从左边0角标开始查找所有元素 
+			
+			Lpop list1 							从左边取一个数据，第一个(取了之后，这个元素就没了)	
+			Rpop list1							有右边取一个数据， 最后一个
+			
+			
+			
+	Set(无序不重复集合)
+			smedmbers	set1					查看set1中所有元素
+			sadd set1 1 2 4 2 					添加元素 	添加3个元素
+			srem set1 1							删除元素
+			sdiff seta setb						取差集 seta - setb
+			sinter seta setb					取交集	共有的元素
+			sunion	seta setb					取并集  二者相加 去重
+			
+	
+	Sorted Set(有序Set集合)	
+			运算代价最高。慎用。一般可以用list替代
+			
+			zadd zset1 1 a 3 b 2 c 				1 2 3 是分数  以分数的大小排序
+			
+			zrange zset1 0 -1 					按照 分数排序取出元素
+			
+			zrevrange zset1 0 -1 				反转取出元素
+			
+			
+			
+			
+	设置key的过期时间
+			expire key1 100 		设置有效期 100秒  可以 多次执行，执行后就重置为 100 秒
+			ttl 	      key1 			如果返回正数，说明正在倒计时 ， -1 是永久保存的， -2 是过期的。
+			persist	key1  		元素的持久化 
+	redis的持久化
+		Rdb：快照形式， 定期把内存中当前时刻的数据保存到磁盘。 Redis的默认支持的持久化方案。
+		Aof：apperd only file 把所有对redis数据库操作的命令，增删改操作的命令。保存到文件中。数据库恢复时把所有命令执行一遍即可。
+				
+				rdb: 可能会丢数据
+				aof: 频繁操作磁盘， 性能较低
+				
+		配置方法：	在redis.conf 文件中配置
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
