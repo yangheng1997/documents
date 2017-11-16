@@ -7,5 +7,42 @@
 		
 	
 2、常用的命令
-		flushdb		清空当前的数据库
-		keys * 		查看所有的key， *是通配符，可以组合使用
+		flushdb					清空当前数据库中的所有 key。执行删除在某个db环境下执行的话，只删除当前db的数据
+		flushall				删除所有现有的数据库 
+		dbsize					查看当前数据库中的 key的数量。
+		keys * 					查看所有的key， *是通配符，可以组合使用。
+		exists key				判断key 存不存在
+		rename key newkey 		修改key的名字
+		renamenx key newkey		仅当 newkey 不存在时，将 key 改名为 newkey 。
+	String（字符串） 
+			INCR  								加一
+			DECR 								减一
+			DECRBY key decrement				key 所储存的值减去给定的减量值（decrement）。
+			
+			APPEND key value					如果 key 已经存在并且是一个字符串， APPEND 命令将 value 追加到 key 原来的值的末尾。 
+			
+			set	key value						添加kye value
+			get key 							取出key对应的value
+			
+			MSET key1 "Hello" key2 "World"		一次添加多个键值对
+			mget key1 key2 key3					获取多个key对应的value
+			
+			MSETNX key1 "Hello" key2 "World"	同时设置一个或多个 key-value 对，当且仅当所有给定 key 都不存在。
+	
+	Hash(哈希)	
+			HSET myhash field1 "foo"			添加一个哈希表，表中有字段 field1 "foo" 
+			Hget myhash fieldl
+			HgetALL	myhash						获取在哈希表中所有字段（键值对）  慎用
+			Hexists myhash field2				判断哈希表中字段的key值存不存在
+			HDEL myhash field2					删除一个或多个哈希表字段
+			Hkeys key 							获取哈希表中的所有字段的key
+			Hvals key 						获取哈希表中的所有字段的value
+			Hlen key							获取一个key中的所有字段的数量
+			Hmget key field1 [field2] 			根据给定哈希表中字段的一个或多个key值获取value ，字段key值不存在返回 nil
+			Hmset key field1 value1 [field2 value2 ]	同时将多个 field-value (域-值)对设置到哈希表 key 中。
+			
+			
+	List(列表)
+				left	左
+				right	右
+			Lpush runoobkey redis				从左边添加一个数据
