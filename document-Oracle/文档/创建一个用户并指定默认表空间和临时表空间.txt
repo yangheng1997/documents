@@ -1,0 +1,29 @@
+oracle 创建一个用户并指定默认表空间和临时表空间 
+
+1. 创建临时表空间 
+
+SQL> create temporary tablespace test1temp  
+tempfile '/u01/app/oracle/oradata/orcl/test1temp01.dbf'  
+size 10240m  
+autoextend off;
+
+2. 创建数据表空间 
+
+SQL> create tablespace test1 
+datafile '/u01/app/oracle/oradata/orcl/test1.dbf' 
+size 10240M
+autoextend off;
+
+3.创建用户并制定临时表空间和默认表空间 
+
+SQL>create user test1 identified by test1 
+default tablespace test1 
+temporary tablespace test1temp; 
+
+4.给用户授予权限 
+
+grant connect,resource to test1; 
+
+备注：
+那些表空间大小你可以自己设置，数据文件所在目录要自己查，名字自己起别重复。
+如果想创建表，你就登陆到这个用户，然后创建就可以了。

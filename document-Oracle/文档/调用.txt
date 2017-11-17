@@ -1,0 +1,16 @@
+CREATE OR REPLACE PROCEDURE text_emp_work_month
+AS
+      p_month varchar2(50):='201609';
+/*********************************************************************
+       程序功能： 调用存储过程               
+       开发人员： XXX
+       开发时间： 2017/09/22
+       源    表： emp_work_detail
+       目 标 表： emp_work_month
+*********************************************************************/
+begin
+      p_emp_work_detail(p_month);
+      dbms_output.put_line('EDW层调用存储过程成功');
+end;
+
+--select * from emp_work_detail

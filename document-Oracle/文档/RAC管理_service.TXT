@@ -1,0 +1,96 @@
+创建service：
+[oracle@maclean1 ~]$ srvctl add service -d prod -s edison_taf -r "PROD1" -a "PROD2" -P basic -e select -m basic -w 5 -z 180
+
+查看service 配置：
+[oracle@maclean1 ~]$ srvctl config service -d prod -s edison_taf
+Service name: edison_taf
+Service is enabled
+Server pool: prod_edison_taf
+Cardinality: 1
+Disconnect: false
+Service role: PRIMARY
+Management policy: AUTOMATIC
+DTP transaction: false
+AQ HA notifications: false
+Failover type: SELECT
+Failover method: BASIC
+TAF failover retries: 180
+TAF failover delay: 5
+Connection Load Balancing Goal: LONG
+Runtime Load Balancing Goal: NONE
+TAF policy specification: BASIC
+Edition: 
+Preferred instances: PROD1
+Available instances: PROD2
+[oracle@maclean1 ~]$
+
+启动service：
+[oracle@maclean1 ~]$ srvctl start service -d prod -s edison_taf
+
+检查service是否运行：
+[oracle@maclean2 ~]$ srvctl status service -d prod
+Service edison_taf is running on instance(s) PROD1
+[oracle@maclean2 ~]$ srvctl status service -d prod -s edison_taf
+Service edison_taf is running on instance(s) PROD1 
+
+检查service是否注册到监听运行:
+[oracle@maclean1 ~]$ lsnrctl status
+
+LSNRCTL for Linux: Version 11.2.0.3.0 - Production on 05-OCT-2014 05:11:51
+
+Copyright (c) 1991, 2011, Oracle.  All rights reserved.
+
+Connecting to (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
+STATUS of the LISTENER
+------------------------
+Alias                     LISTENER
+Version                   TNSLSNR for Linux: Version 11.2.0.3.0 - Production
+Start Date                05-OCT-2014 02:29:45
+Uptime                    0 days 2 hr. 42 min. 5 sec
+Trace Level               off
+Security                  ON: Local OS Authentication
+SNMP                      OFF
+Listener Parameter File   /g01/grid/app/11.2.0/grid/network/admin/listener.ora
+Listener Log File         /g01/diag/tnslsnr/maclean1/listener/alert/log.xml
+Listening Endpoints Summary...
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=LISTENER)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=192.168.1.171)(PORT=1521)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=192.168.1.172)(PORT=1521)))
+Services Summary...
+Service "+ASM" has 1 instance(s).
+  Instance "+ASM1", status READY, has 1 handler(s) for this service...
+Service "PROD" has 1 instance(s).
+  Instance "PROD1", status READY, has 1 handler(s) for this service...
+Service "edison_taf" has 1 instance(s).
+  Instance "PROD1", status READY, has 1 handler(s) for this service...
+The command completed successfully
+[oracle@maclean1 ~]$ 
+
+停止service：
+srvctl stop service -d <database-name> -s <service-name> -i instance-name -c connect-string -q -f
+
+删除service：
+srvctl remove service -d database-name -s service-name -i instance-name [-f]
+
+通过sql查询service：
+SQL> select name,service_id from dba_services where name = 'edison_taf';
+
+NAME		SERVICE_ID
+--------------- ----------
+edison_taf		 4
+
+SQL> col name format a15
+SQL> col failover_method format a11 heading 'METHOD'
+SQL> col failover_type format a10 heading 'TYPE'
+SQL> col failover_retries format 9999999 heading 'RETRIES'
+SQL> col goal format a10
+SQL> col clb_goal format a8
+SQL> col AQ_HA_NOTIFICATIONS format a5 heading 'AQNOT'
+SQL> select name, failover_method, failover_type, failover_retries,goal, clb_goal,aq_ha_notifications from dba_services where service_id = 4;
+
+NAME		METHOD	    TYPE	RETRIES GOAL	   CLB_GOAL AQNOT
+--------------- ----------- ---------- -------- ---------- -------- -----
+edison_taf	BASIC	    SELECT	    180 NONE	   LONG     NO
+
+SQL> 
+

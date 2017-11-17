@@ -1,0 +1,100 @@
+CREATE OR REPLACE PROCEDURE p_emp_work_detail(p_month varchar2)
+AS
+/*********************************************************************
+       程序功能： 创建存储过程，实现将员工的上下班时间分开;
+                  判断员工是否迟到，早退，加班;
+       开发人员：XXX
+       开发时间：2017/09/22
+       源    表： ods_emp_work
+       临 时 表： temp_emp_work
+       目 标 表： emp_work_detail
+*********************************************************************/
+str varchar2(8000);
+BEGIN
+  ---创建临时表
+  execute immediate 'create table temp_emp_work(
+         u_id number(20),
+         u_name varchar2(50),
+         u_time varchar2(50),
+         sign_in date,
+         sign_out date,
+         sign_more date
+         )';
+  
+  --给临时表插入数据         
+  str:= 'insert into temp_emp_work(u_id,u_name,u_time,sign_in,sign_out,sign_more)
+  select u_id,
+         u_name,
+         to_char(datetime,''yyyymm''),
+         max(case when r=1 then datetime else null end) sign_in,
+         max(case when r=2 then datetime else null end) sign_out,
+         max(case when r=3 then datetime else null end) sign_more
+  from(
+  select u_id,
+         u_name,
+         datetime,
+         row_number()over(partition by u_id,u_name,to_char(datetime,''yyyymmdd'')order by 1) r
+  from ods_emp_work where to_char(datetime,''yyyymm''):=1) 
+  group by u_id,
+           u_name,
+           to_char(datetime,''yyyymm'')';
+  commit;
+  --select * from temp_emp_work
+  --调整口径
+  --一次打卡记录
+     --一次上班打卡记录
+     --一次下班打卡记录(5点后即为下班)
+  execute immediate 'update temp_emp_work set sign_out=sign_in
+  where sign_out is null and to_char(sign_in,''hh24:mi'')>''1700''';
+  --把不满足上班时间的数据更新为空
+  execute immediate 'update temp_emp_work set sign_in=null
+  where  to_char(sign_in,''hh24:mi'')>''1700''';
+  commit;  
+  ---三次打卡记录
+      --两次上班，一次下班记录
+      --一次上班，两次下班记录
+  execute immediate 'update temp_emp_work set sign_out=sign_more 
+  where sign_more is not null';
+  commit;
+  --判断是否迟到，早退,加班
+  --创建目标表
+  /*
+  create table emp_work_detail(  
+         u_id number(20),
+         u_name varchar2(50),
+         u_month varchar2(50),
+         sign_in date,
+         sign_out date,
+         is_late number(20),
+         is_early number(20),
+         is_overtime number(20)
+         );
+   */
+   --给目标表中插入数据
+    execute immediate 'truncate table emp_work_detail';
+    execute immediate 'insert into emp_work_detail(u_id,u_name,u_month,sign_in,sign_out,is_late,is_early,is_overtime)   
+    select u_id,
+           u_name,
+           substr(u_time,1,6),
+           sign_in, 
+           sign_out,
+           case when to_char(sign_in,''hh24mi'')>''0901''  then 1 else 0 end is_late,
+           case when to_char(sign_out,''hh24mi'')<''1730'' then 1 else 0 end is_early,
+           case when to_char(sign_out,''hh24mi'')>''2000'' then 1 else 0 end is_over_time
+           from temp_emp_work';
+    commit;
+    execute immediate 'drop table temp_emp_work';
+   --select * from emp_work_detail
+end;
+
+  
+   
+         
+  
+         
+         
+         
+         
+         
+         
+         
