@@ -1,0 +1,69 @@
+1、添加缓存到 content-service项目。 添加在服务层和展示层的区别只在于 添加在服务层可以被 共享缓存 。
+		具体操作
+			根据项目情况，展示层在取值的是根据内容分类管理菜单id在内容表中取值的，
+			即
+				TbContentCategory  内容分类管理实体类 。TbContentCategory.id   简称 cid。
+				TbContent			内容实体类。有属性 Long categoryId 		即 cid。
+			所以，在content-service项目中ContentServiceImpl 的 查询Handler(处理器)添加缓存，
+			
+					业务逻辑
+						1、	查询时，先从缓存中查询，如果有的话，直接返回给 调用者。没有再去查数据库，然后将查到的数据保存到缓存中。
+							不论是查缓存还是保存到缓存，都不应该影响正常操作，需要加上try Catch。
+							
+						2、	缓存应该是hash类型，将调用者进行分类，好保存到缓存。查询可以叫做 CONTENT_LIST
+						
+								2.1、 创建resource.properties 保存分类信息。 
+								
+								2.2、 加载resource.properties 将spring/applicationContext-dao.xml下加载配置文件的字段内容进行修改，
+									  因为这个字段在一个spring容器中只能使用一次，所以要改成
+									  <!-- 加载配置文件 -->
+									  <context:property-placeholder location="classpath:conf/*.properties" />
+									  
+								2.3、 在实现类中进行注入和调用， 
+										@Value("${CONTENT_LIST}")
+										private CONTENT_LIST 
+												
+						这样有了 内容列表在redis中缓存的key 可以进行添加缓存了
+						
+						//查询缓存
+						try {
+							//如果缓存中有直接响应结果
+							String json = jedisClient.hget(CONTENT_LIST, cid + "");
+							if (StringUtils.isNotBlank(json)) {
+								List<TbContent> list = JsonUtils.jsonToList(json, TbContent.class);
+								return list;
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						//如果没有查询数据库
+						TbContentExample example = new TbContentExample();
+						Criteria criteria = example.createCriteria();
+						//设置查询条件
+						criteria.andCategoryIdEqualTo(cid);
+						//执行查询
+						List<TbContent> list = contentMapper.selectByExampleWithBLOBs(example);
+						//把结果添加到缓存
+						try {
+							jedisClient.hset(CONTENT_LIST, cid + "", JsonUtils.objectToJson(list));
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						return list;
+					
+					注意 ， 缓存中所以数据都是String 类型。需要用到StringUtils 转换成字符串，
+					
+					
+2、缓存同步。
+			缓存同步的原理：	在进行增删改操作时，根据cid 删除 该cid在  CONTENT_LIST 字段中的值，让其在查询时重新从数据库中取值。
+			
+			
+			//将内容数据插入到内容表
+			content.setCreated(new Date());
+			content.setUpdated(new Date());
+			//插入到数据库
+			contentMapper.insert(content);
+			//缓存同步,删除缓存中对应的数据。
+			jedisClient.hdel(CONTENT_LIST, content.getCategoryId().toString());
+			return E3Result.ok();		
+		

@@ -1,0 +1,43 @@
+业务域的配置
+schema	架构 	所有的域都在这里配置。
+
+	schema.xml中定义
+	1、商品Id		id
+	2、商品标题		title
+	3、商品卖点		sell_point
+	4、商品价格		price
+	5、商品图片		image
+	6、分类名称		category_id 	cid
+
+创建对应的业务域。需要制定中文分析器。
+
+	第一步：使用IK-Analyzer。把分析器的文件夹上传到服务器
+	第二步：需要把分析器的jar包添加到solr工程中	
+					cd /root/IK Analyzer 2012FF_hf1
+					cp IKAnalyzer2012FF_u1.jar /usr/local/solr/tomcat/webapps/solr/WEB-INF/lib/
+			
+	第三步：需要把IKAnalyzer需要的扩展词典及停用词词典、配置文件复制到solr工程的classpath（classes）
+					cd /root/IK Analyzer 2012FF_hf1
+					mkdir /usr/local/solr/tomcat/webapps/solr/WEB-INF/classes 
+					cp IKAnalyzer.cfg.xml  ext_stopword.dic  mydict.dic   /usr/local/solr/tomcat/webapps/solr/WEB-INF/classes 
+	第四步：配置fieldType。需要在solrhome/collection1/conf/schema.xml中添加 fieldType。
+				
+				技巧：使用vi、vim跳转到文档开头gg。跳转到文档末尾：G 
+				在schema.xml的末尾加入
+<fieldType name="text_ik" class="solr.TextField">
+	<analyzer class="org.wltea.analyzer.lucene.IKAnalyzer"/>
+</fieldType>
+	
+	第五步：配置业务域，type制定使用自定义的FieldType。设置业务系统Field
+			在schema.xml的末尾加入
+	
+<field name="item_title" type="text_ik" indexed="true" stored="true"/>
+<field name="item_sell_point" type="text_ik" indexed="true" stored="true"/>
+<field name="item_price"  type="long" indexed="true" stored="true"/>
+<field name="item_image" type="string" indexed="false" stored="true" />
+<field name="item_category_name" type="string" indexed="true" stored="true" />
+
+<field name="item_keywords" type="text_ik" indexed="true" stored="false" multiValued="true"/>
+<copyField source="item_title" dest="item_keywords"/>
+<copyField source="item_sell_point" dest="item_keywords"/>
+<copyField source="item_category_name" dest="item_keywords"/>
