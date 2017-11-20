@@ -1,0 +1,44 @@
+一、solrj的使用，测试方法。
+	1、引入jar包。
+	2、向solr服务器添加数据。
+
+			//创建一个SolrServer对象，创建一个连接。参数solr服务的url
+			SolrServer solrServer = new HttpSolrServer("http://192.168.25.148:8080/solr/collection1");
+			//创建一个文档对象SolrInputDocument
+			SolrInputDocument document = new SolrInputDocument();
+			//向文档对象中添加域。文档中必须包含一个id域，所有的域的名称必须在schema.xml中定义。
+			document.addField("id", "doc01");
+			document.addField("item_title", "测试商品01");
+			document.addField("item_price", 1000);
+			//把文档写入索引库
+			solrServer.add(document);
+			//提交
+			solrServer.commit();
+	
+	3、 删除数据
+		SolrServer solrServer = new HttpSolrServer("http://192.168.25.148:8080/solr/collection1");
+		//删除文档
+		//solrServer.deleteById("doc01");
+		solrServer.deleteByQuery("id:doc01");
+		//提交
+		solrServer.commit();
+
+
+二、 将需要被查询的数据从数据库导入到solr服务器中。
+	1、根据需要被导入的字段编写pojo对象， SearchItem 。searchitem中的属性就是solr中定义的域。
+	2、编写mybatis的mapper。用来查询和取出数据。
+		2.1、 编写sql语句。多表查询 left join   on 。
+		2.2、 配置applicationContext-dao ，使其扫描到新增的mapper。
+		2.3、 配置pom文件。指定mybatis的classpath ,使其打包后不会丢失.xml文件。
+	
+	3、 将查询到的数据导入到solr服务器。
+		3.1、 注入SolrServer 
+				applicationContext-solr.xml
+				注入bean,SolrServer是抽象类。所以注入其子类。
+						<bean id="httpSolrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
+							<constructor-arg index="0" value="http://192.168.25.148:8080/solr/collection1"/>
+						</bean>
+		3.2、 通过创建文档对象。向文档对象中添加域。将文档对象写入索引库（SolrServer）。提交索引库。完成导入工作，
+		
+		
+		
