@@ -55,6 +55,13 @@ http://www.osyunwei.com/archives/5445.html
 	alter user soctt account lock; // 把 scott用户锁定
 	alter user scott account unlock; //把scott用户解锁
 	alter user scott identified by tiger //修改scott用户密码为 tiger,scott用户默认密码为 tiger
+	
+	
+sqlplus 连接远程数据库。
+sqlplus username/password@//host:port/sid
+
+　　用sqlplus远程连接oracle命令(例：	
+sqlplus risenet/1@//192.168.130.99:1521/risenet
 
 
 在windows 安装oracle 客户端

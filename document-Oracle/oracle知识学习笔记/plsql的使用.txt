@@ -1,0 +1,10 @@
+begin 
+
+end;
+
+plsql 块。
+
+Declare	子句：声明在pl/sql块中需要被使用到的变量。
+Begin		: pl/sql 块中运行时需要被执行的语句。
+Exception	: 异常处理语句。
+End			： 表示pl/sql块的结束，后面必须接分号。
