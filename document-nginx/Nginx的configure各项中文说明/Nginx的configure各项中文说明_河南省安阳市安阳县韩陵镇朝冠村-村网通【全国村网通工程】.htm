@@ -1,0 +1,671 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>Nginx的configure各项中文说明_河南省安阳市安阳县韩陵镇朝冠村-村网通【全国村网通工程】</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="mobile-agent" content="format=xhtml; url=http://m.448569.gove.cn/article/1434120.html">
+<meta name="applicable-device" content="pc">
+<meta name="keywords" content="Nginx的configure各项中文说明,河南省安阳市安阳县韩陵镇,朝冠村">
+<meta name="description" content="–prefix=
+–Nginx安装路径。如果没有指定，默认为/usr/local/nginx。
+–sbin-path=
+–Nginx可执行文件安装路径。只能安装时指定，如果没有指定，默认为
+/sbin/nginx。
+–c....">
+<link rel="stylesheet" href="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/main.css" type="text/css">
+<script type="text/javascript" async="" src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/eicgfcgiwiiviawcgorvwy.js"></script><script type="text/javascript" src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/jquery.js"></script>
+<script type="text/javascript" src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/jquery_002.js"></script>
+<style>
+#logo h1{font-size: 40px;}
+#logo span{font-size: 53px;}
+#logo{background: url(http://static.gove.cn/main/images/top/10.jpg);}
+
+#logo h1 {
+z-index: 10;
+position: absolute;
+left: 130px;
+}
+#cunimg{height: 170px;top: 0;width: 1000px;background: url(http://static.gove.cn/main/images/trans.png);position: absolute;z-index: 1;}
+#logo {
+background: url(http://img.gove.cn/u/2017/11/22/b8411cbc_l.jpg);background-size: 1000px 170px;
+position: relative;
+}
+#logo img {
+z-index: 999;
+top: 0;
+position: absolute;
+}
+</style>
+
+
+<script src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/share.js"></script><link rel="stylesheet" href="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/share_style1_32.css"><link rel="stylesheet" href="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/imgshare.css"><link rel="stylesheet" href="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/share_style0_32.css"></head>
+<body>
+<script language="javascript">
+function showbox(){
+$('#applybox').css('display','block');
+$('#applybg').css('display','block');
+$('#applybg').css('width',$('body').width());
+$('#applybg').css('height',$('body').height());
+$('#applybox').css('top',(($(window).height()-$('#applybox').height())/2));
+$('#applybox').css('left',(($(window).width()-$('#applybox').width())/2));
+}
+function hidebox(){
+$('#applybox').css('display','none');
+$('#applybg').css('display','none');
+return false;
+}
+</script>
+<div id="applybg" onclick="hidebox();"></div>
+<div id="applybox">
+<div>
+<span onclick="hidebox();">关闭</span>
+<h1>举报</h1>
+<li><input name="sel" id="rp1" value="1" type="radio"><label for="rp1">垃圾广告</label></li>
+<li><input name="sel" id="rp2" value="2" type="radio"><label for="rp2">色情低俗</label></li>
+<li><input name="sel" id="rp3" value="3" type="radio"><label for="rp3">反动政治</label></li>
+<li><input name="sel" id="rp4" value="4" type="radio"><label for="rp4">谣言诋毁</label></li>
+<li><input name="sel" id="rp5" value="5" type="radio"><label for="rp5">与事实不符</label></li>
+<li><input name="sel" id="rp6" value="6" type="radio"><label for="rp6">恶意泄露他人私密</label></li>
+<li><input name="sel" id="rp7" value="7" type="radio"><label for="rp7">谩骂攻击</label></li>
+<li><input name="sel" id="rp8" value="8" type="radio"><label for="rp8">其他</label><input style="padding: 4px;font-size: 14px;margin-left: 4px;width:200px;" placeholder="提醒：请不要超过30个汉字！" name="etc" id="retc" type="text"></li>
+<a href="javascript:void(0);" id="usereport">提交</a>
+</div>
+</div>
+<div id="topbar">
+<div class="content">
+<div class="navbar fl">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/gove.png" data-bd-imgshare-binded="1"><a href="http://www.gove.cn/"><font>全国村网通工程</font></a> 朝冠村 <a href="http://www.448569.gove.cn/">www.448569.gove.cn</a> 欢迎您！
+</div>
+<div class="navbar fr">
+
+<a href="http://www.gove.cn/reg">注册</a> |
+<a href="http://www.gove.cn/login">登录</a> |
+<a href="http://www.cuntouhao.com/" target="_blank">村头号</a> |
+<a href="http://www.cun58.com/" target="_blank">村聊聊</a> |
+<a href="http://www.1688s.com/" target="_blank">农产批发</a> |
+<a href="http://www.ecunji.com/" target="_blank">分类信息</a> |
+<a href="http://www.alicunbao.com/" target="_blank">农村网店</a> |
+<a href="http://www.gove.cn/div" target="_blank">村庄查找</a> |
+<a href="http://www.acom.cn/" target="_blank">商家建站</a>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div id="header">
+<div id="logo"><img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/logo.png" data-bd-imgshare-binded="1" height="82"><h1>河南省安阳市安阳县韩陵镇<span>朝冠村</span></h1><div id="cunimg"></div></div>
+</div>
+<div id="menu">
+<div class="content">
+<a href="http://www.448569.gove.cn/">网站首页</a>
+<a href="http://www.448569.gove.cn/about">村庄简介</a>
+<a href="http://www.448569.gove.cn/class/1" target="_blank">村里通知</a>
+<a href="http://www.448569.gove.cn/class/2" target="_blank">三农热点</a>
+<a href="http://www.448569.gove.cn/class/3" target="_blank">村人村事</a>
+<a href="http://www.448569.gove.cn/class/4" target="_blank">党建扶贫</a>
+<a href="http://www.448569.gove.cn/class/5" target="_blank">招商引资</a>
+<a href="http://www.448569.gove.cn/class/6" target="_blank">农业企业</a>
+<a href="http://www.448569.gove.cn/class/7" target="_blank">农业技术</a>
+<a href="http://www.448569.gove.cn/class/8" target="_blank">家乡特产</a>
+<a href="http://www.448569.gove.cn/class/9" target="_blank">家乡图片</a>
+<a href="http://www.448569.gove.cn/class/10" target="_blank">扩展频道</a>
+
+</div>
+</div>
+
+<div class="main">
+<div class="fl w960">
+<script src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/vs.htm"></script></div>
+<div class="fr w30 box">
+<a href="http://www.448569.gove.cn/">村墙广告</a>
+</div>
+<div class="clear"></div>
+</div>
+<div class="main atl-nav">
+<div>
+<a href="http://www.448569.gove.cn/">首页</a> &gt;
+<a href="http://www.448569.gove.cn/class/1010">教育科技</a> &gt;
+<span>正文</span>
+</div>
+ <div class="search">
+<ul id="searchbox">
+<li name="1"><a>本村</a></li>
+<li name="2"><a>整站</a></li>
+<li name="3"><a>村庄</a></li>
+<s><s></s></s>
+</ul>
+<form method="get" action="/search">
+<input name="q" type="text">
+<input value="1" name="n" id="searchtype" type="hidden">
+<input value="搜索" type="submit">
+</form>
+</div>
+<div class="clear"></div>
+</div>
+<div class="main">
+<div class="article">
+
+<h1>Nginx的configure各项中文说明</h1>
+<div class="date">2017-11-16 08:56:10&nbsp; &nbsp; 浏览：139&nbsp; &nbsp; 回复：0&nbsp; &nbsp; 点赞：0</div>
+
+
+
+<div class="acom"><a href="http://www.41.acom.cn/" target="_blank">河南省<span>本地商家</span></a><a href="http://www.4105.acom.cn/" target="_blank">安阳市<span>本地商家</span></a><a href="http://www.410522.acom.cn/" target="_blank">安阳县<span>本地商家</span></a><a href="http://www.410522113.acom.cn/" target="_blank">韩陵镇<span>本地商家</span></a></div>
+<div class="atl"><pre style="margin-top: 0px; margin-bottom: 5px; padding: 5px; border: 1px solid rgb(154, 154, 154); font-size: 1.1em; background-color: rgb(0, 0, 0); color: rgb(0, 255, 0); font-family: Verdana, Tahoma, sans-serif, &quot;Times Neo Roman&quot;, &quot;Lucida Sans Unicode&quot;, Georgia, Arial; width: 696.453px; white-space: pre-wrap; overflow-wrap: break-word; text-shadow: rgb(0, 255, 0) 0px 0px 11px; text-align: justify; word-break: break-all; max-width: 100%;">–prefix=
+
+&nbsp;–&nbsp;Nginx安装路径。如果没有指定，默认为&nbsp;/usr/local/nginx。
+–sbin-path=
+&nbsp;–&nbsp;Nginx可执行文件安装路径。只能安装时指定，如果没有指定，默认为
+/sbin/nginx。
+–conf-path=
+&nbsp;–&nbsp;在没有给定-c选项下默认的nginx.conf的路径。如果没有指定，默认为
+/conf/nginx.conf。
+–pid-path=
+&nbsp;–&nbsp;在nginx.conf中没有指定pid指令的情况下，默认的nginx.pid的路径。如果没有指定，默认为
+/logs/nginx.pid。
+–lock-path=
+&nbsp;–&nbsp;nginx.lock文件的路径。
+–error-log-path=
+&nbsp;–&nbsp;在nginx.conf中没有指定error_log指令的情况下，默认的错误日志的路径。如果没有指定，默认为
+/logs/error.log。
+–http-log-path=
+&nbsp;–&nbsp;在nginx.conf中没有指定access_log指令的情况下，默认的访问日志的路径。如果没有指定，默认为
+/logs/access.log。
+–user=&nbsp;–&nbsp;在nginx.conf中没有指定user指令的情况下，默认的nginx使用的用户。如果没有指定，默认为&
+nbsp;nobody。
+–group=&nbsp;–&nbsp;在nginx.conf中没有指定user指令的情况下，默认的nginx使用的组。如果没有指定，默认为&
+nbsp;nobody。
+–builddir=DIR&nbsp;–&nbsp;指定编译的目录
+–with-rtsig_module&nbsp;–&nbsp;启用&nbsp;rtsig&nbsp;模块
+–with-select_module&nbsp;–without-select_module&nbsp;–&nbsp;允许或不允许开启
+SELECT模式，如果&nbsp;configure&nbsp;没有找到更合适的模式，比
+如：kqueue(sun&nbsp;os),epoll&nbsp;
+(linux&nbsp;kenel&nbsp;2.6+),&nbsp;rtsig(实时信号)或者/dev/poll(一种类似select的模式，
+底层实现与SELECT基本相&nbsp;同，都是采用轮训方法)&nbsp;SELECT模式将是默认安装模式
+–with-poll_module&nbsp;–without-
+poll_module&nbsp;–&nbsp;Whether&nbsp;or&nbsp;not&nbsp;to&nbsp;enable&nbsp;the&nbsp;poll&nbsp;module.&nbsp;This&nbsp;module&nbsp;is&nbsp;enabled&nbsp;by&nbsp;default&nbsp;if&nbsp;a&nbsp;more&nbsp;suitable&nbsp;method&nbsp;such&nbsp;as&nbsp;kqueue,&nbsp;epoll,&nbsp;rtsig&nbsp;or&nbsp;/dev
+/poll&nbsp;is&nbsp;not&nbsp;discovered&nbsp;by&nbsp;configure.
+–with-http_ssl_module&nbsp;–&nbsp;开启HTTP&nbsp;SSL模块，使NGINX可以支持HTTPS请求。这个
+模块需要已经安装了OPENSSL，在DEBIAN上是libssl
+–with-http_realip_module&nbsp;–&nbsp;启用&nbsp;ngx_http_realip_module
+–with-http_addition_module&nbsp;–&nbsp;启用&nbsp;ngx_http_addition_module
+–with-http_sub_module&nbsp;–&nbsp;启用&nbsp;ngx_http_sub_module
+–with-http_dav_module&nbsp;–&nbsp;启用&nbsp;ngx_http_dav_module
+–with-http_flv_module&nbsp;–&nbsp;启用&nbsp;ngx_http_flv_module
+–with-http_stub_status_module&nbsp;–&nbsp;启
+用&nbsp;“server&nbsp;status”&nbsp;页
+–without-http_charset_module&nbsp;–&nbsp;禁用&nbsp;ngx_http_charset_module
+–without-http_gzip_module&nbsp;–&nbsp;禁
+用&nbsp;ngx_http_gzip_module.&nbsp;如果启用，需要&nbsp;zlib&nbsp;。
+–without-http_ssi_module&nbsp;–&nbsp;禁用&nbsp;ngx_http_ssi_module
+–without-http_userid_module&nbsp;–&nbsp;禁用&nbsp;ngx_http_userid_module
+–without-http_access_module&nbsp;–&nbsp;禁用&nbsp;ngx_http_access_module
+–without-http_auth_basic_module&nbsp;–&nbsp;禁
+用&nbsp;ngx_http_auth_basic_module
+–without-http_autoindex_module&nbsp;–&nbsp;禁
+用&nbsp;ngx_http_autoindex_module
+–without-http_geo_module&nbsp;–&nbsp;禁用&nbsp;ngx_http_geo_module
+–without-http_map_module&nbsp;–&nbsp;禁用&nbsp;ngx_http_map_module
+–without-http_referer_module&nbsp;–&nbsp;禁用&nbsp;ngx_http_referer_module
+–without-http_rewrite_module&nbsp;–&nbsp;禁
+用&nbsp;ngx_http_rewrite_module.&nbsp;如果启用需要&nbsp;PCRE&nbsp;。
+–without-http_proxy_module&nbsp;–&nbsp;禁用&nbsp;ngx_http_proxy_module
+–without-http_fastcgi_module&nbsp;–&nbsp;禁用&nbsp;ngx_http_fastcgi_module
+–without-http_memcached_module&nbsp;–&nbsp;禁
+用&nbsp;ngx_http_memcached_module
+–without-http_limit_zone_module&nbsp;–&nbsp;禁
+用&nbsp;ngx_http_limit_zone_module
+–without-http_empty_gif_module&nbsp;–&nbsp;禁
+用&nbsp;ngx_http_empty_gif_module
+–without-http_browser_module&nbsp;–&nbsp;禁用&nbsp;ngx_http_browser_module
+–without-http_upstream_ip_hash_module&nbsp;–&nbsp;禁
+用&nbsp;ngx_http_upstream_ip_hash_module
+–with-http_perl_module&nbsp;–&nbsp;启用&nbsp;ngx_http_perl_module
+–with-perl_modules_path=PATH&nbsp;–&nbsp;指定&nbsp;perl&nbsp;模块的路径
+–with-perl=PATH&nbsp;–&nbsp;指定&nbsp;perl&nbsp;执行文件的路径
+–http-log-path=PATH&nbsp;–&nbsp;Set&nbsp;path&nbsp;to&nbsp;the&nbsp;
+http&nbsp;access&nbsp;log
+–http-client-body-temp-path=PATH&nbsp;–&nbsp;Set&nbsp;path&nbsp;to&nbsp;
+the&nbsp;http&nbsp;client&nbsp;request&nbsp;body&nbsp;temporary&nbsp;files
+
+–http-proxy-temp-path=PATH&nbsp;–&nbsp;Set&nbsp;path&nbsp;to&nbsp;the&
+nbsp;http&nbsp;proxy&nbsp;temporary&nbsp;files
+–http-fastcgi-temp-path=PATH&nbsp;–&nbsp;Set&nbsp;path&nbsp;to&nbsp;the&
+nbsp;http&nbsp;fastcgi&nbsp;temporary&nbsp;files
+–without-http&nbsp;–&nbsp;禁用&nbsp;HTTP&nbsp;server
+–with-mail&nbsp;–&nbsp;启用&nbsp;IMAP4/POP3/SMTP&nbsp;代理模块
+–with-mail_ssl_module&nbsp;–&nbsp;启用&nbsp;ngx_mail_ssl_module
+–with-cc=PATH&nbsp;–&nbsp;指定&nbsp;C&nbsp;编译器的路径
+–with-cpp=PATH&nbsp;–&nbsp;指定&nbsp;C&nbsp;预处理器的路径
+–with-cc-opt=OPTIONS&nbsp;–&nbsp;Additional&nbsp;parameters&nbsp;which&
+nbsp;will&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;variable&nbsp;CFLAGS.&nbsp;With&nbsp;the&nbsp;use&nbsp;of&nbsp;the&nbsp;system&nbsp;library&nbsp;PCRE&nbsp;in&nbsp;FreeBSD,&nbsp;it&nbsp;is&nbsp;necessary&nbsp;to&nbsp;indicate&nbsp;–
+with-cc-opt=”-I&nbsp;/usr/local/include”.&nbsp;If&nbsp;we&nbsp;are&nbsp;
+using&nbsp;select()&nbsp;and&nbsp;it&nbsp;is&nbsp;necessary&nbsp;to&nbsp;increase&nbsp;the&nbsp;number&nbsp;of&nbsp;file&nbsp;descriptors,&nbsp;then&nbsp;this&nbsp;also&nbsp;can&nbsp;be&nbsp;assigned&nbsp;here:&nbsp;–
+with-cc-opt=”-D&nbsp;FD_SETSIZE=2048″.
+–with-ld-opt=OPTIONS&nbsp;–&nbsp;Additional&nbsp;parameters&nbsp;passed&
+nbsp;to&nbsp;the&nbsp;linker.&nbsp;With&nbsp;the&nbsp;use&nbsp;of&nbsp;the&nbsp;system&nbsp;library&nbsp;PCRE&nbsp;in&nbsp;FreeBSD,&nbsp;it&nbsp;is&nbsp;necessary&nbsp;to&nbsp;indicate&nbsp;–
+with-ld-opt=”-L&nbsp;/usr/local/lib”.
+–with-cpu-opt=CPU&nbsp;–&nbsp;为特定的&nbsp;CPU&nbsp;编译，有效的值包括：pentium,&
+nbsp;pentiumpro,&nbsp;pentium3,&nbsp;pentium4,&nbsp;athlon,&nbsp;opteron,&nbsp;amd64,&nbsp;sparc32,&nbsp;sparc64,&nbsp;ppc64
+
+–without-pcre&nbsp;–&nbsp;禁止&nbsp;PCRE&nbsp;库的使用。同时也会禁
+止&nbsp;HTTP&nbsp;rewrite&nbsp;模块。在&nbsp;“location”&nbsp;配置指令中的正则表达式也需
+要&nbsp;PCRE&nbsp;。
+–with-pcre=DIR&nbsp;–&nbsp;指定&nbsp;PCRE&nbsp;库的源代码的路径。
+–with-pcre-opt=OPTIONS&nbsp;–&nbsp;Set&nbsp;additional&nbsp;options&
+nbsp;for&nbsp;PCRE&nbsp;building.
+–with-md5=DIR&nbsp;–&nbsp;Set&nbsp;path&nbsp;to&nbsp;md5&nbsp;library&
+nbsp;sources.
+–with-md5-opt=OPTIONS&nbsp;–&nbsp;Set&nbsp;additional&nbsp;options&nbsp;
+for&nbsp;md5&nbsp;building.
+–with-md5-asm&nbsp;–&nbsp;Use&nbsp;md5&nbsp;assembler&nbsp;sources.
+–with-sha1=DIR&nbsp;–&nbsp;Set&nbsp;path&nbsp;to&nbsp;sha1&nbsp;library&
+nbsp;sources.
+–with-sha1-opt=OPTIONS&nbsp;–&nbsp;Set&nbsp;additional&nbsp;options&
+nbsp;for&nbsp;sha1&nbsp;building.
+–with-sha1-asm&nbsp;–&nbsp;Use&nbsp;sha1&nbsp;assembler&nbsp;sources.
+–with-zlib=DIR&nbsp;–&nbsp;Set&nbsp;path&nbsp;to&nbsp;zlib&nbsp;library&
+nbsp;sources.
+–with-zlib-opt=OPTIONS&nbsp;–&nbsp;Set&nbsp;additional&nbsp;options&
+nbsp;for&nbsp;zlib&nbsp;building.
+–with-zlib-asm=CPU&nbsp;–&nbsp;Use&nbsp;zlib&nbsp;assembler&nbsp;
+sources&nbsp;optimized&nbsp;for&nbsp;specified&nbsp;CPU,&nbsp;valid&nbsp;values&nbsp;are:&nbsp;pentium,&nbsp;pentiumpro
+
+–with-openssl=DIR&nbsp;–&nbsp;Set&nbsp;path&nbsp;to&nbsp;OpenSSL&nbsp;
+library&nbsp;sources
+–with-openssl-opt=OPTIONS&nbsp;–&nbsp;Set&nbsp;additional&nbsp;options&
+nbsp;for&nbsp;OpenSSL&nbsp;building
+–with-debug&nbsp;–&nbsp;启用调试日志
+–add-module=PATH&nbsp;–&nbsp;Add&nbsp;in&nbsp;a&nbsp;third-party&nbsp;module&nbsp;found&nbsp;in&nbsp;directory&nbsp;PATH</pre><p style="max-width: 100%;"><br style="max-width: 100%;"></p></div>
+<div class="cgg">
+
+<a href="http://www.eduo.cn/" target="_blank"><img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/670-90.png" data-bd-imgshare-binded="1" width="670" height="90"></a>
+
+</div>
+
+
+<div class="clear"></div>
+<div class="bdsharebuttonbox bdshare-button-style1-32" data-bd-bind="1511432651057"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":
+{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":
+{},"image":{"viewList":
+["qzone","tsina","tqq","renren","weixin"],"viewText":"分享
+到：","viewSize":"32"}};with(document)0[(getElementsByTagName('head')
+[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new
+ Date()/36e5)];</script>
+<div id="likebtn"><span id="likeclk" class="like">点赞</span> <span id="likenum">0</span></div>
+<div id="reportbtn">！我要举报这篇文章</div>
+<div id="likerr"></div>
+<div id="reviews">
+<b>村民评论</b>
+
+<div class="entry">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/a.png" class="avatar" style="margin-top: 10px;" data-bd-imgshare-binded="1">
+<form method="post">
+<textarea name="content" id="rcontent" placeholder="说点什么吧......"></textarea>
+<input class="r_btn" id="0" value="发表评论" type="button"><span class="error"></span>
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/01.png" class="liaoface" data-bd-imgshare-binded="1">
+<span class="face">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/01.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f01]');" data-bd-imgshare-binded="1">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/02.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f02]');" data-bd-imgshare-binded="1">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/03.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f03]');" data-bd-imgshare-binded="1">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/04.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f04]');" data-bd-imgshare-binded="1">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/05.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f05]');" data-bd-imgshare-binded="1">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/06.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f06]');" data-bd-imgshare-binded="1">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/07.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f07]');" data-bd-imgshare-binded="1">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/08.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f08]');" data-bd-imgshare-binded="1">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/09.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f09]');" data-bd-imgshare-binded="1">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/10.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f10]');" data-bd-imgshare-binded="1">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/11.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f11]');" data-bd-imgshare-binded="1">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/12.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f12]');" data-bd-imgshare-binded="1">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/13.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f13]');" data-bd-imgshare-binded="1">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/14.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f14]');" data-bd-imgshare-binded="1">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/15.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f15]');" data-bd-imgshare-binded="1">
+<img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/16.png" onclick="$('#rcontent').val($('#rcontent').val()+'[f16]');" data-bd-imgshare-binded="1">
+</span>
+</form>
+</div>
+<div class="clear"></div>
+
+
+</div>
+<script>
+$('.r_btn').click(function() {
+//$('#reviews form').submit();
+$('.r_btn').attr('disabled','true');
+$.post('', { content: $('#rcontent').val(), rid: '0' } ,
+function(data){
+if (data.msg != 'ok') {
+$('.error').css('display','inline-block');
+$('.error').html(data.msg);
+$('.r_btn').attr('disabled',null);
+}else{
+var timestamp=new Date().getTime();
+location.href='/article/1434120.html?'+timestamp+'#reviews';
+}
+}, 'json');
+});
+function rp_btn(rpid){
+$('.r_btn').attr('disabled','true');
+$.post('', { content: $('#rp'+rpid+' textarea[name=\'content\']').val(), rid: rpid } ,
+function(data){
+if (data.msg != 'ok') {
+$('#rp'+rpid+' .error').css('display','inline-block');
+$('#rp'+rpid+' .error').html(data.msg);
+$('.r_btn').attr('disabled',null);
+}else{
+var timestamp=new Date().getTime();
+location.href='/article/1434120.html?'+timestamp+'#reviews';
+}
+}, 'json');
+}
+</script>
+
+<div class="next">
+<li>上一篇：<a href="http://www.448569.gove.cn/article/1434110.html">RHEL6.X CentOS 6.X系统服务详解</a></li>
+<li>下一篇：<a href="http://www.448569.gove.cn/article/1434192.html">交流接触器接线图实例讲解</a></li>
+</div>
+<div class="related">
+<strong>相关热词搜索：</strong>
+
+</div>
+<div class="cgg">
+
+<a href="http://www.cuntouhao.com/" target="_blank" class="mr10"><img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/330-90-2.png" data-bd-imgshare-binded="1" width="330" height="90"></a>
+
+
+<a href="http://www.govz.cn/" target="_blank"><img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/330-90-1.png" data-bd-imgshare-binded="1" width="330" height="90"></a>
+
+</div>
+<div class="cgg">
+
+<a href="" target="_blank"><img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/a015cb04_l.png" data-bd-imgshare-binded="1" width="670" height="120"></a>
+
+</div>
+<div class="cgg">
+
+<a href="http://www.xiaoqugang.com/" target="_blank"><img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/670-90-2x.png" data-bd-imgshare-binded="1" width="670" height="90"></a>
+
+</div>
+<div class="back">
+<a href="http://www.448569.gove.cn/">首页 &gt;&gt;</a><a href="http://www.448569.gove.cn/class/1010">教育科技 &gt;&gt;</a>
+</div>
+<div class="copy">
+<span>声明</span>
+本文来源：村网通GOVE.CN，转载请注明出处。本文由村网通注册用户发表，不代表村网通完全赞同其观点和对其真实性负责。本网转载其他来源的作品如涉及侵权请及时联系我们，我们将在24小时内予以删除！</div>
+</div>
+ <div class="sidebar">
+
+<div class="sbox">
+
+<a href="http://www.cun58.com/" target="_blank"><img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/300-100-0.png" data-bd-imgshare-binded="1" width="300" height="100"></a>
+
+</div>
+<div class="sbox">
+
+<a href="http://www.1688s.com/" target="_blank"><img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/300-100-1.png" data-bd-imgshare-binded="1" width="300" height="100"></a>
+
+</div>
+<div class="sbox">
+
+<a href="http://www.ecunji.com/" target="_blank"><img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/300-100-2.png" data-bd-imgshare-binded="1" width="300" height="100"></a>
+
+</div>
+<div class="sbox">
+
+<a href="http://www.alicunbao.com/" target="_blank"><img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/300-100-3.png" data-bd-imgshare-binded="1" width="300" height="100"></a>
+
+</div>
+<div class="sbox">
+
+<a href="http://www.acom.cn/" target="_blank"><img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/300-250.png" style="display: none !important;" data-bd-imgshare-binded="1" width="300" height="250"></a>
+
+</div>
+
+<div class="sbox">
+
+</div>
+<dl>
+<dt><span>热门推荐</span></dt>
+<dd>
+
+<li>
+<a href="http://www.448569.gove.cn/article/1437711.html" title="详谈视频监控的集中供电，以及摄像头供起不来如何解决" target="_blank">详谈视频监控的集中供电，以及摄像头供起不来如何解决</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/1434619.html" title="非常精致的句子，句句戳心，值得收藏" target="_blank">非常精致的句子，句句戳心，值得收藏</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/1434092.html" title="CentOS 6.3下nginx php-fpm drupal快速部署" target="_blank">CentOS 6.3下nginx php-fpm drupal快速部署</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/1429794.html" title="最全常用电子元件图解" target="_blank">最全常用电子元件图解</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/1422647.html" title="yum使用高级用法技巧" target="_blank">yum使用高级用法技巧</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/1422628.html" title="centos最小化安装系统后的基本调优及安全设置" target="_blank">centos最小化安装系统后的基本调优及安全设置</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/1406962.html" title="只要相爱，不做夫妻也行" target="_blank">只要相爱，不做夫妻也行</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/1330774.html" title="影响人生的12句话，说的真好，谁看了都会服的”" target="_blank">影响人生的12句话，说的真好，谁看了都会服的”</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/1324925.html" title="人，需要一个真心的异性朋友" target="_blank">人，需要一个真心的异性朋友</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/1192751.html" title="天道酬勤，地道酬善，人道酬诚，商道酬信，业道酬精" target="_blank">天道酬勤，地道酬善，人道酬诚，商道酬信，业道酬精</a>
+</li>
+
+</dd>
+</dl>
+<dl>
+<dt><span>本月排行</span></dt>
+<dd>
+
+<li>
+<a href="http://www.448569.gove.cn/article/1194017.html" title="100多种电线线路接线图，居家必备，值得收藏" target="_blank">100多种电线线路接线图，居家必备，值得收藏</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/1247063.html" title="做电工必备：收集最全电工接线电路图" target="_blank">做电工必备：收集最全电工接线电路图</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/516262.html" title="最全列表： 80 多个 Linux 系统管理员必备的监控工具" target="_blank">最全列表： 80 多个 Linux 系统管理员必备的监控工具</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/475493.html" title="看德国电工的布线：如此完美 美得令人窒息！" target="_blank">看德国电工的布线：如此完美 美得令人窒息！</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/480311.html" title="Linux 系统实时监控的瑞士军刀 —— Glances" target="_blank">Linux 系统实时监控的瑞士军刀 —— Glances</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/1233380.html" title="老电工珍藏：36种自动控制原理图" target="_blank">老电工珍藏：36种自动控制原理图</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/1044640.html" title="国内最好用的公用DNS" target="_blank">国内最好用的公用DNS</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/507974.html" title="新手应知应会的Linux命令" target="_blank">新手应知应会的Linux命令</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/1184129.html" title="那些超强的网络修复命令" target="_blank">那些超强的网络修复命令</a>
+</li>
+
+<li>
+<a href="http://www.448569.gove.cn/article/506678.html" title="11个让你吃惊的 Linux 终端命令" target="_blank">11个让你吃惊的 Linux 终端命令</a>
+</li>
+
+</dd>
+</dl>
+<div class="sbox sbox_f">
+<div id="_xics5xdsaya"><iframe scrolling="no" src="//pos.baidu.com/s?hei=250&amp;wid=300&amp;di=u2805982&amp;ltu=http%3A%2F%2Fwww.448569.gove.cn%2Farticle%2F1434120.html&amp;chi=3&amp;dai=1&amp;pis=-1x-1&amp;dtm=HTML_POST&amp;tcn=1511432651&amp;cdo=-1&amp;dc=2&amp;exps=111000&amp;pss=1903x4836&amp;cpl=1&amp;ltr=http%3A%2F%2Fwww.448569.gove.cn%2Fclass%2F1010&amp;cfv=27&amp;psr=1920x1080&amp;par=1920x1040&amp;dri=0&amp;ps=1954x1151&amp;ccd=24&amp;cmi=2&amp;drs=1&amp;tlm=1511432650&amp;cce=true&amp;tpr=1511432650969&amp;pcs=1903x957&amp;cja=false&amp;cec=UTF-8&amp;ti=Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91&amp;col=zh-CN&amp;ari=2&amp;dis=0&amp;ant=0" width="300" height="250" frameborder="0"></iframe></div><script type="text/javascript" src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/mhwjnepjwkon.js"></script>
+<br>
+<div id="_cpw0mo2b4yv"><iframe scrolling="no" src="//pos.baidu.com/s?hei=250&amp;wid=300&amp;di=u2805984&amp;ltu=http%3A%2F%2Fwww.448569.gove.cn%2Farticle%2F1434120.html&amp;cec=UTF-8&amp;dtm=HTML_POST&amp;tlm=1511432650&amp;tpr=1511432650969&amp;drs=1&amp;ps=2204x1151&amp;pis=-1x-1&amp;tcn=1511432651&amp;cdo=-1&amp;ant=0&amp;exps=111000&amp;ari=2&amp;chi=3&amp;cmi=2&amp;dri=0&amp;par=1920x1040&amp;cja=false&amp;pcs=1903x957&amp;ltr=http%3A%2F%2Fwww.448569.gove.cn%2Fclass%2F1010&amp;cfv=27&amp;dai=2&amp;cce=true&amp;dc=2&amp;ti=Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91&amp;ccd=24&amp;psr=1920x1080&amp;col=zh-CN&amp;dis=0&amp;pss=1903x4836&amp;cpl=1" width="300" height="250" frameborder="0"></iframe></div><script type="text/javascript" src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/ojylpgrlfmqybf.js"></script>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<script>
+$('.atl img').parents('p').css('text-align','center');
+$('.atl span').css('white-space','');
+$('.atl').find('*').css('max-width','100%');
+$('.atl').find('*').css('min-width','');
+$('.atl').find('*').css('position','');
+$('.atl').find('*').css('float','');
+$('.atl embed').css('max-width','100%');
+//$('.atl iframe').remove();
+
+$('.article table').css('width','auto');
+$("#searchbox").mouseout(function() {
+$("#searchbox").height('34px');
+$("#searchbox").css('background','#f5f5f5');
+$("#searchbox").css('border-left-color','#f5f5f5');
+$("#searchbox").css('border-bottom','0');
+});
+$( "#searchbox" ).mouseover(function() {
+$( "#searchbox" ).height('102px');
+$("#searchbox").css('background','#fff');
+$("#searchbox").css('border-left-color','#ddd');
+$("#searchbox").css('border-bottom','1px solid #ddd');
+});
+$( "#searchbox li" ).click(function() {
+var n = $('#searchbox li').index(this);
+var a = $('#searchbox li:eq('+n+')');
+$('#searchtype').val(a.attr('name'));
+if (eval(a.attr('name'))>1){
+$('.search form').attr('action','http://www.gove.cn/search');
+}else{
+$('.search form').attr('action','/search');
+}
+$('#searchbox').prepend(a);
+$('#searchbox').height('34px');
+$('#searchbox').css('background','#f5f5f5');
+$("#searchbox").css('border-left-color','#f5f5f5');
+$("#searchbox").css('border-bottom','0');
+});
+$(document).ready(function(){
+var sboxPos = $('.sbox_f').offset().top-10;
+$(window).scroll(function(){
+var srollPos = $(window).scrollTop();
+var footPos = $(document).height() - $(window).scrollTop();
+if (srollPos>= sboxPos&& footPos>770){
+$('.sbox_f').addClass('rf_fixed');
+}else{
+$('.sbox_f').removeClass('rf_fixed');
+}
+});
+});
+function rp(rpid){
+$('#reviews p form').remove();
+$('#rp'+rpid).append('<form method="post"><textarea name="content" 
+placeholder="说点什么吧......"></textarea><input type="button" class="r_btn" 
+onclick="rp_btn('+ rpid +');" value="发表回复" /><span 
+class="error"></span></form></div><div class="clear"></div>');
+}
+function rps(rpid){
+if ($('#rr'+rpid).html()==''){
+$.get('/reply?id='+rpid, {} ,
+function(data){
+$('#rr'+rpid).html(data);
+});
+}else{
+$('#rr'+rpid).html('');
+}
+}
+$('#likebtn').click(function() {
+$.post('?a=like', {} ,
+function(data){
+if (data.msg == 'ok') {
+$('#likenum').html(data.num);
+if (data.like == '1') {
+$('#likeclk').addClass('liked');
+$('#likeclk').removeClass('like');
+}else{
+$('#likeclk').removeClass('liked');
+$('#likeclk').addClass('like');
+}
+}else{
+$('#likerr').show();
+$('#likerr').html(data.msg);
+}
+}, 'json');
+});
+$('.liaoface').click(function() {
+$('.face').toggle();
+});
+$('.face img').click(function() {
+$('.face').hide();
+});
+$('#reportbtn').click(function() {
+showbox();
+});
+$('#usereport').click(function() {
+$.post('?a=report', {r: $('input[name=\'sel\']:checked').val(),etc: 
+$('input[name=\'etc\']').val()} ,
+function(data){
+if (data.msg == 'ok') {
+//location.reload();
+$('#applybox div li').remove();
+$('#applybox div a').remove();
+$('#applybox div').append('<p>举报成功！我们会尽快核实处理！</p>');
+$('#applybox').css('top',(($(window).height()-$('#applybox').height())/2));
+$('#applybox').css('left',(($(window).width()-$('#applybox').width())/2));
+setTimeout('hidebox();',1000);
+}
+},
+ 'json');
+});
+</script>
+<div id="footer">
+<div class="footinc"><p class="udli">
+<a href="http://www.gove.cn/article/10508.html" target="_blank">关于我们</a> &nbsp;|&nbsp;
+<a href="http://www.cnaas.cn/" target="_blank">村网通农科院</a> &nbsp;|&nbsp;
+<a href="http://www.gove.cn/article/10509.html" target="_blank">客服中心</a> &nbsp;|&nbsp;
+<a href="http://www.1231601.com/" target="_blank">易村客</a> &nbsp;|&nbsp;
+<a href="http://www.gove.cn/article/11991.html" target="_blank">媒体报道</a> &nbsp;|&nbsp;
+<a href="http://www.1233110.com/" target="_blank">投诉举报</a> &nbsp;|&nbsp;
+<a href="http://www.gove.cn/class/12" target="_blank">帮助问答</a> &nbsp;|&nbsp;
+<a href="http://www.id888888.com/" target="_blank">查询服务</a>
+</p>
+<p>
+<a href="http://www.cnaas.cn/2016/zhengcewenjian_1009/1306.html" target="_blank">农市发[2016]2号</a> &nbsp; &nbsp; &nbsp; &nbsp;
+<a href="http://www.cnaas.cn/2016/zhengcewenjian_1009/1308.html" target="_blank">工信部信软〔2015〕440号</a> &nbsp; &nbsp; &nbsp; &nbsp;
+<a href="http://www.cnaas.cn/2017/zhengcewenjian_0824/1369.html" target="_blank">商建函〔2017〕597号</a> &nbsp; &nbsp; &nbsp; &nbsp;
+<a href="http://www.cnaas.cn/2017/zhengcewenjian_0911/1378.html" target="_blank">京村农院函〔2017〕002号</a>
+<br>
+版权所有：北京村网通农业科技研究院 &nbsp; 控股运营：村网通（香港）控股有限公司 &nbsp; <a href="http://www.cnaas.cn/2017/shenqinggongkai_0618/1361.html" target="_blank">软著登字第1825094号</a>
+<br>京ICP备16037175号 &nbsp; <script src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/z_stat.php" language="JavaScript"></script><script src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=1253988491" target="_blank" title="站长统计">站长统计</a> &nbsp; 全国客户服务电话：400-636-1858 &nbsp; 客服QQ：800166789 &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://m.448569.gove.cn/">手机版</a></p>
+
+<div class="qr" style="right:260px;padding:4px;"><a href="http://www.gove.cn/" target="_blank"><img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/cun.png" data-bd-imgshare-binded="1" height="102"></a></div><div class="qr" style="right:130px;padding:4px;"><a href="http://v.pinpaibao.com.cn/authenticate/cert/?site=www.gove.cn&amp;at=realname" target="_blank"><img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/dun.png" data-bd-imgshare-binded="1" height="102"></a></div>
+<div class="qr"><img src="Nginx%E7%9A%84configure%E5%90%84%E9%A1%B9%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E_%E6%B2%B3%E5%8D%97%E7%9C%81%E5%AE%89%E9%98%B3%E5%B8%82%E5%AE%89%E9%98%B3%E5%8E%BF%E9%9F%A9%E9%99%B5%E9%95%87%E6%9C%9D%E5%86%A0%E6%9D%91-%E6%9D%91%E7%BD%91%E9%80%9A%E3%80%90%E5%85%A8%E5%9B%BD%E6%9D%91%E7%BD%91%E9%80%9A%E5%B7%A5%E7%A8%8B%E3%80%91_files/9.png" data-bd-imgshare-binded="1" height="110"><br>扫一扫 进村站</div>
+</div>
+</div>
+
+<script>
+$.post('/analytics', { r: document.referrer });
+</script>
+
+
+
+
+<div id="bdimgshare_1511432651062" class="sr-bdimgshare sr-bdimgshare-list sr-bdimgshare-32 sr-bdimgshare-black" style="height: 48px; line-height: 38px; font-size: 14px; position: absolute; top: 4362.47px; left: 451.5px; width: 670px; display: none;" data-bd-bind="1511432651062"><div class="bdimgshare-bg"></div><div class="bdimgshare-content bdsharebuttonbox bdshare-button-style0-32"><label class="bdimgshare-lbl">分享到：</label><a href="#" onclick="return false;" class="bds_qzone" data-cmd="qzone" hidefocus=""></a><a href="#" onclick="return false;" class="bds_tsina" data-cmd="tsina" hidefocus=""></a><a href="#" onclick="return false;" class="bds_tqq" data-cmd="tqq" hidefocus=""></a><a href="#" onclick="return false;" class="bds_renren" data-cmd="renren" hidefocus=""></a><a href="#" onclick="return false;" class="bds_weixin" data-cmd="weixin" hidefocus=""></a><a href="#" onclick="return false;" class="bds_more" data-cmd="more" hidefocus=""></a></div></div></body></html>

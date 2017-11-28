@@ -1,0 +1,3 @@
+yum groupinstall "X Window System" "Desktop" -y
+
+init 5ªÚ’ﬂstartx
