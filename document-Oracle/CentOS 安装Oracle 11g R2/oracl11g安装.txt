@@ -1,0 +1,110 @@
+安装database-server版本的Centos
+
+一、 安装图形界面
+			yum groupinstall "X Window System" "Desktop" -y
+			启用图形界面 
+					startx 或 init 5
+					
+二、配置系统环境
+		1、下载oracle 11g r2 linux 版本。 上传到centos的 /usr/local/src 目录下。
+		2、在Linux服务器上创建oracle数据库安装目录
+			mkdir -p /data/oracle #oracle数据库安装目录
+			mkdir -p /data/oraInventory #oracle数据库配置文件目录
+			mkdir -p /data/database #oracle数据库软件包解压目录
+		3、创建运行oracle数据库的系统用户和用户组
+			groupadd oinstall #创建用户组oinstall
+			groupadd dba #创建用户组dba
+			useradd -g oinstall -g dba -m oracle #创建用户oracle，并加入oinstall和dba用户组
+			passwd oracle #设置用户oracle的登录密码，根据提示输入两次密码
+			chown -R oracle:oinstall /data/oracle #设置目录所有者为oinstall用户组的oracle用户
+			chown -R oracle:oinstall /data/oraInventory
+			chown -R oracle:oinstall /data/database	
+		4、修改操作系统标识（oracle默认不支持CentOS系统安装）
+
+			vi /etc/redhat-release #编辑
+				把：CentOS release 5.8 (Final)
+				修改为：redhat-4
+			
+		5、设置系统内核参数
+
+			vi /etc/sysctl.conf #编辑，在最后添加以下代码
+				net.ipv4.icmp_echo_ignore_broadcasts = 1
+				net.ipv4.conf.all.rp_filter = 1
+				fs.file-max = 6815744 #设置最大打开文件数
+				fs.aio-max-nr = 1048576
+				kernel.shmall = 2097152 #共享内存的总量，8G内存设置：2097152*4k/1024/1024
+				kernel.shmmax = 2147483648 #最大共享内存的段大小
+				kernel.shmmni = 4096 #整个系统共享内存端的最大数
+				kernel.sem = 250 32000 100 128
+				net.ipv4.ip_local_port_range = 9000 65500 #可使用的IPv4端口范围
+				net.core.rmem_default = 262144
+				net.core.rmem_max= 4194304
+				net.core.wmem_default= 262144
+				net.core.wmem_max= 1048576
+			
+			sysctl -p #使配置立即生效
+			
+		6、设置oracle用户限制，提高软件运行性能
+
+			vi /etc/security/limits.conf #在末尾添加以下代码
+				oracle soft nproc 2047
+				oracle hard nproc 16384
+				oracle soft nofile 1024
+				oracle hard nofile 65536
+				
+		7、配置用户环境
+
+			vi /home/oracle/.bash_profile #在最后添加以下代码
+				export ORACLE_BASE=/data/oracle #oracle数据库安装目录
+				export ORACLE_HOME=$ORACLE_BASE/product/11.2.0/db_1 #oracle数据库路径
+				export ORACLE_SID=orcl #oracle启动数据库实例名
+				export ORACLE_TERM=xterm #xterm窗口模式安装
+				export PATH=$ORACLE_HOME/bin:/usr/sbin:$PATH #添加系统环境变量
+				export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib #添加系统环境变量
+				export LANG=C #防止安装过程出现乱码
+				export NLS_LANG=AMERICAN_AMERICA.ZHS16GBK #设置Oracle客户端字符集，必须与Oracle安装时设置的字符集保持一致，如：ZHS16GBK，否则出现数据导入导出中文乱码问题
+				
+			source /home/oracle/.bash_profile  #使设置立刻生效
+			
+		8、关闭SELINX
+
+			vi /etc/selinux/config #编辑配置文件
+
+				#SELINUX=enforcing #注释掉
+				#SELINUXTYPE=targeted #注释掉
+				SELINUX=disabled #增加
+				
+		9、配置防火墙开启1521端口
+		
+			iptables -I INPUT 5 -m state --state NEW -m tcp -p tcp --dport 1521 -j ACCEPT
+			service iptables save		#保存
+			service iptables restart	#应用
+		
+		
+		10、解压oracle压缩文件到解压目录
+
+			cd /usr/local/src #进入目录
+			unzip linux_11gR2_database_1of2.zip -d /data/database #解压
+			unzip linux_11gR2_database_2of2.zip -d /data/database #解压
+			chown -R oracle:oinstall /data/database/database
+	
+		11、安装oracle数据库所需要的软件包
+
+			yum install gcc* gcc-* gcc-c++-* glibc-devel-* glibc-headers-* compat-libstdc* libstdc* elfutils-libelf-devel* libaio-devel* sysstat* unixODBC-* pdksh-*
+			
+		
+三、安装
+			
+		切换到 oracle 用户下。
+		su – oracle
+		cd /data/database/database #进入安装包目录
+		./runInstaller #安装，开始安装
+			如果出现的页面是乱码。退出 执行
+			export LANG=en_US.UTF-8
+			然后重新安装
+	
+		安装过程为图文教程 
+			http://www.osyunwei.com/archives/5445.html
+			
+			
+Red Hat Enterprise Linux Server release 6.5 (Santiago)
