@@ -1,0 +1,138 @@
+alter 改变。 用于在建表后添加约束。 
+alert js弹出框。
+
+约束 
+	constraint	约束
+	transaction	事务
+
+	not null		非空
+	unique			唯一
+	primary key		主键
+	foreign key		外键
+	check			用于强制行数据必须满足的条件。假定在sal列上定义了check约束，
+				并要求sal列值在1000-2000之间，如果不在1000-2000之间就提示出错。
+				
+	2、添加约束
+			如果在建表时忘记建立必要的约束，则可以在建表后使用alter table命令为表增加约束，但是要注意：增加not null约束时，需要使用modify选项，而增加其他四种约束使用add选项。
+
+			（1）增加商品名也不能为空
+
+			sql>alter table Goods modify GoodsId not null;
+
+			（2）增加身份证也不能重复
+
+			sql>alter table Customers add constraint UQ_CardId unique(CardId);
+
+			（3）增加客户的住址只能是海淀、朝阳、东城、西域
+
+			sql>alter table Customers add constraint CK_Address check(Address in ('海淀','朝阳','东城','西域'));
+
+
+
+	 3、删除约束
+
+			当不再需要某个约束时，可以删除。
+
+			sql>alter table 表名 drop constraint 约束名称;
+
+			特别说明：
+
+			在删除主键约束的时候，可能有错误。比如
+
+			sql> alter table 表名 drop primary key;
+
+			这是因为如果在两表存在主从关系，那么在删除主表主键约束时，必须带上cascade选项。
+
+			sql> alter table 表名 drop primary key cascade;
+
+
+	4、显示约束信息
+
+			A、显示约束信息
+
+			通过查询数据字典视图user_constraints，可以显示当前用户所有的约束的信息。
+
+			sql>select constraint_name,constraint_type,status,validated from user_constraints where table_name='Goods';
+
+			B、显示列约束
+
+			通过查询数据字典视图user_cons_column，可以显示约束所对应的表列信息。
+
+			sql>select column_name,position from user_cons_columns where constraint_name='CK_Address';
+
+
+
+	6、表级定义和列级定义
+
+			A、表级定义
+
+			表级定义是指在定义了所有列后，再定义约束，这里需要注意，not null约束只能在列级上定义。
+
+			案例：
+
+			sql> create table Goods(
+
+			GoodsId char(8),
+
+			GoodsName varchar2(50),
+
+			Category varchar(30),
+
+			constraint PK_GoodsId primary key(GoodsId));
+
+			B、列级定义
+
+			列级定义是在定义列的同时定义约束。
+				
+	
+	
+		案例：
+
+			sql>create table Goods(
+
+			GoodsId char(8) constraint PK_GoodsId primary key ,--主键
+
+			GoodName varchar2(50),
+
+			UnitPrice number(10,2) check(UnitPrice>0),--单价必须大于0
+
+			Category varchar(30),
+
+			Provider varchar(100));
+	
+	
+	
+	参考地址 http://blog.csdn.net/huacai2010/article/details/7943535
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
