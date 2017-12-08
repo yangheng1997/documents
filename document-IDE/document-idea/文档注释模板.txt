@@ -1,0 +1,11 @@
+
+菜单：	File->settings->Editor->File and Code Templates->Files->Class
+	给java类添加注释模板。 设自定义变量 ${DESCRIPTION} ：描述
+/**
+  Created with IntelliJ IDEA.
+  User: ${USER}
+  Date: ${DATE}
+  Time: ${TIME}
+  To change this template use File | Settings | File Templates.
+  Description: ${DESCRIPTION}
+**/
