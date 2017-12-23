@@ -1,0 +1,20 @@
+		Hibernate : 是开源的ORM(对象关系映射)框架。 
+				对象  关系
+		ORM  : object Relational Mapping. 他的作用就是在关系型数据库和对象之间做了一个映射。 从对象、映射到关系，再从关系映射到对象。通过操作对象，对数据库关系进行修改。不需复杂sql。 
+		
+		Hibernate的核心：
+			接口：
+			1、Configuration	： 负责配置并启动Hibernate。
+			2、SessionFactory	:  负责初始化Hibernate。
+			3、Session			:  负责持久化对象的CRUD操作。
+			4、Transaction		:  负责事务。
+			5、Query、Criteria	:  负责执行各种数据库查询。
+			
+			配置文件：
+			1、Hibernate.cfg.xml: 配置文件
+			2、xxx.hbm.xml		: 映射文件
+			
+			
+			
+		注意：	 Configuration实例是一个启动期间的对象。一旦SessionFactron创建完成它就被丢弃了。 
+		
