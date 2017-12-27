@@ -1,0 +1,148 @@
+producer	生产者
+consumer 	消费者
+Destination	目的地
+
+Queue 点对点
+		一个发布者发布消息，下面的接收者按队列书序接收。比如发布了10条消息，两个接收者A、B。 就是说AB总共收到10条消息，不重复。
+		
+Topic 发布订阅
+		一个发布者发布消息，有两个接收者AB来订阅，那么发布了10条消息，AB各收到10条消息。 
+		
+activeMQ jar包要使用5.11.1版本。 5.12.0版本中有问题。 复写了spring的类，但缺少方法。会导致运行报错。
+
+Queue模式下的生产者
+	Queue-producer
+			1、 创建一个连接工厂。
+			2、 使用连接工厂创建一个连接ActiveMQ的对象Connection。
+			3、 开启连接。
+			4、 使用Connection对象创建一个Session。 
+					第一个参数：是否开启事务（ActiveMQ的事务，跟数据库没关系）使用JTA技术可以实现分布式事务，一般不使用。 
+					true:开启，false:不开启。当第一个参数为true时,第二个参数没有意义。一般是false。
+					第二个参数：消息的应答模式。手动应答和自动应答。一般自动应答就可以。 
+					
+					Session session = connection.createSession(falase, Session.CLIENT_ACKNOWLEDGE);
+			5、 使用session对象创建一个Destination（目的）对象，有两种 queue topic 
+					queue topic 是 Destination 的子类。 
+					
+					//参数 test-queue  给发送的消息取个名字。
+					Queue queue = session.createQuery("test-queue");
+			
+			6、 使用session 创建一个生产者对象（product）
+					MessageProducer producer = session.createProducer(queue);
+			
+			7、 创建一个TextMessage对象，保存要发送的内容， 
+					两种方法
+						1、
+						TextMessage textMessage = new ActiveMQTextMessage();
+						textMessage.setText("hello ActiveMQ11");
+						
+						2、
+						TextMessage textMessage = session.createTextMessage("hell ");
+						
+			8、 使用Porducer发送消息
+						producer.send(textMessage);
+			
+			9、	关闭资源
+						producer.close();
+						session.close();
+						connection.close();
+						
+			
+			
+			
+			
+Queue下的消费者
+	Queue-consumer
+			1、 创建一个连接工厂对象
+			2、 使用连接工厂创建连接对象
+			3、 开启连接
+			4、 使用连接对象创建一个session 对象
+			5、 使用Session对象创建一个Destination
+			6、 使用session对象创建一个Consumer对象（消费者Consumer）
+			7、 使用Consumer接收消息，需要注册一个监听对象
+			8、 接收到消息。从消息对象中取消息内容
+						手动应答
+						等待接收消息
+			9、释放资源
+		
+		
+		
+		
+		
+Topic下的生产者
+	Topic-producer
+			1、 创建一个连接工厂对象
+			2、 使用连接工厂创建一个连接ActiveMQ的connection
+			3、 开启连接
+			4、 使用Connection 创建一个Session对象。 
+					第一个参数：是否开启事务，事务是ActiveMQ的事务，和数据库的事务无关。使用JTA技术可实现分布式事务，一般不使用。
+					true开启，false关闭。当第一个事务为true时，第二个参数没有意义。 一般是false。
+					第二个参数： 消息的应答模式。手动应答和自动应答。 一般自动应答就可以了。
+			
+			5、 使用session对象创建一个Destination对象。有两种， Queue. Topic 。现在用Topic
+			6、 使用session对象创建一个生产者Producer对象
+					消息的投送模式为持久化 
+						producer.setDeliveryMode(DeliveryMode.PERSISTENT );		//(persistent)
+						
+			7、 创建一个TextMessage对象，保存要发送的内容。 
+			8、 使用Producer发送消息
+			9、 关闭资源
+			
+			
+Topic下的消费者
+	Topic-consumer
+					
+			1、 创建一个连接工厂
+			2、 使用连接工厂创建一个连接对象
+					设置客户端ID 
+			
+			3、 开启连接
+			4、 使用连接对象创建一个Session对象 
+			5、 使用Session对象创建一个Destination对象，应该使用Topic
+			6、 使用session对象创建一个消费者对象
+					参数1 消息目的地。 参数2 订阅者名称
+					
+			7、 使用Consumer接收消息，需要注册一个监听对象。 
+			8、 接受到消息、从消息对象中取消息内容
+					等待接收消息
+			9、 释放资源
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
