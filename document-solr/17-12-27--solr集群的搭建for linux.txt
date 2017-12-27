@@ -1,0 +1,73 @@
+1、创建文件夹
+			mkdir /usr/local/solrCloud
+
+2、 上传tomcat并重命名
+			tomcat01
+			tomcat02
+			tomcat03
+			tomcat04
+
+3、 修改tomcat端口
+			tomcat01	8180
+			tomcat02	8280
+			tomcat03	8380
+			tomcat04	8480
+	
+4、 将单机版的solr实例放入每个tomcat的webapps中。 
+
+5、 将单机版的solrhome文件复制到solrCloud中，复制四份，并重命名。 
+			solrhome01
+			solrhome02
+			solrhome03
+			solrhome04
+			
+6、修改上面每一个tomcat中solr项目的web.xml关联对应的solrhome
+			vim tomcat01/webapps/solr/WEB-INF/web.xml
+			
+					<env-entry>  
+							 <env-entry-name>solr/home</env-entry-name>  
+							 <env-entry-value>/usr/local/solr-cloud/solrhome01</env-entry-value>  
+							 <env-entry-type>java.lang.String</env-entry-type>  
+					</env-entry>
+					
+			vim tomcat02/webapps/solr/WEB-INF/web.xml
+			vim tomcat03/webapps/solr/WEB-INF/web.xml			
+			vim tomcat04/webapps/solr/WEB-INF/web.xml			
+			
+7、修改每个solrhome中的solr.xml ,使其与tomcat的端口，ip 一一对应。 
+			vim solrhome01/solr.xml
+					
+					<str name="host">${192.168.25.148}</str>
+					<str name="hostPort">${8180}</str>
+					
+			vim solrhome02/solr.xml
+			vim solrhome03/solr.xml
+			vim solrhome04/solr.xml
+		
+8、把配置文件上传到zookeeper。需要使用solr压缩目录下的zkcli.sh脚本。
+				对应路径为solr-4.10.3/example/scripts/cloud-scripts/zkcli.sh
+			
+		#把/usr/local/solr-cloud/solrhome01/collection1/conf目录上传到zookeeper。需要zookeeper集群已经启动。  
+		./zkcli.sh -zkhost 192.168.17.168:2181,192.168.17.168:2182,192.168.17.168:2183 -cmd upconfig -confdir /usr/local/solr-cloud/solrhome01/collection1/conf -confname myconf  
+		
+		
+		在使用zkcli.sh时报./zkcli.sh: line 13: unzip: command not found
+		Error: Could not find or load main class org.apache.solr.cloud.ZkCLI错误,进入solr解压缩目录solr-4.10.3/example下运行
+
+		java -jar start.jar命令
+		
+9、使用zookeeper的zkCli.sh命令查看是否上传成功
+
+10、告诉solr实例zookeeper的位置。需要修改tomcat的catalina.sh添加以下内容
+
+		#每个tomcat节点都需要添加  
+		JAVA_OPTS="-DzkHost=192.168.17.168:2181,192.168.17.168:2182,192.168.17.168:2183" 
+		
+
+11、将集群分为两片，每片两个副本。在浏览器访问solr服务的地址后面加上这些参数
+
+http://192.168.17.168:8080/solr/admin/collections?action=CREATE&name=collection2&numShards=2&replicationFactor=2
+
+12、删除不用的collection1
+http://192.168.17.168:8080/solr/admin/collections?action=DELETE&name=collection1
+				

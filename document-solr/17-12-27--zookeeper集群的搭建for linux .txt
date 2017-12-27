@@ -1,0 +1,70 @@
+1、创建文件夹
+		mkdir -r /usr/local/solrCloud
+	
+2、上传zookeeper安装包、解压三份。 
+		给三分文件命名。
+		zookeeper01
+		zookeeper02
+		zookeeper03
+		
+3、创建data文件夹， myid文件
+		mkdir zookeeper01/data
+		mkdir zookeeper02/data
+		mkdir zookeeper03/data
+		
+		echo 1 > zookeeper01/data/myid
+		echo 1 > zookeeper01/data/myid
+		echo 1 > zookeeper01/data/myid
+
+4、将每个zookeeper下conf目录下的zoo_sample.cfg文件复制一份改名为zoo.cfg。
+		cp zookeeper01/conf/zoo_sample.cfg zookeeper01/conf/zoo.cfg
+		
+		cp zookeeper02/conf/zoo_sample.cfg zookeeper02/conf/zoo.cfg
+		
+		cp zookeeper03/conf/zoo_sample.cfg zookeeper03/conf/zoo.cfg
+		
+5、修改zoo.cfg文件
+		vim zookeeper01/conf/zoo.cfg
+		
+			修改data文件的目录
+				dataDir=/usr/local/solrCloud/zookeeper01/data
+			客户端连接的端口
+				ClientPort=2181
+			集群中节点的信息，包括ip地址及投票、选举的端口。
+				server.1=192.168.25.148:2181:3181
+				server.2=192.168.25.148:2181:3181
+				server.3=192.168.25.148:2181:3181
+			
+		vim zookeeper02/conf/zoo.cfg
+		
+			修改data文件的目录
+				dataDir=/usr/local/solrCloud/zookeeper01/data
+			客户端连接的端口
+				ClientPort=2181
+			集群中节点的信息，包括ip地址及投票、选举的端口。
+				server.1=192.168.25.148:2181:3181
+				server.2=192.168.25.148:2181:3181
+				server.3=192.168.25.148:2181:3181
+				
+		vim zookeeper03/conf/zoo.cfg
+		
+			修改data文件的目录
+				dataDir=/usr/local/solrCloud/zookeeper01/data
+			客户端连接的端口
+				ClientPort=2181
+			集群中节点的信息，包括ip地址及投票、选举的端口。
+				server.1=192.168.25.148:2181:3181
+				server.2=192.168.25.148:2181:3181
+				server.3=192.168.25.148:2181:3181
+				
+				
+6、启动zookeeper。 
+			/usr/local/solrCloud/zookeeper01/bin/zkServer.sh start
+			/usr/local/solrCloud/zookeeper02/bin/zkServer.sh start
+			/usr/local/solrCloud/zookeeper03/bin/zkServer.sh start
+				
+			/usr/local/solrCloud/zookeeper01/bin/zkServer.sh status
+			/usr/local/solrCloud/zookeeper02/bin/zkServer.sh status
+			/usr/local/solrCloud/zookeeper03/bin/zkServer.sh status
+				
+				
