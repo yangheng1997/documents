@@ -1,0 +1,9 @@
+springBoot	是springMVC的升级版。
+			1、简化配置。
+			2、是下一代框架。
+			
+微服务依赖于springCloud -springCloud依赖于SpringBoot
+
+@Controller		:处理http请求
+@RestController	:Spring4之后新加的注解。是@Controller和@ResponseBody的组合。字符串转json。	
+@RequestMapping	:配置url映射。 
