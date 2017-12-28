@@ -16,7 +16,7 @@ git add 只将新建的或者已更改的文件添加到索引区。（不会添
 git add -u  这个命令的意思是 add to index only files modified or deleted and not those created
 只会处理已修改或者已删除的文件，但是不会处理新建的文件
 
-
+   
 http://www.jianshu.com/p/45ef8508a646 参考链接
 
 
