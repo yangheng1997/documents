@@ -1,0 +1,14 @@
+一 、 sql语句的执行顺序
+		from where select 
+		先确定表。然后横向连接。 最后查询
+		
+		from where group by having select order by
+		
+		having		:	可以对group by 进行限定（group by 分组）
+		笛卡尔乘积	:	两个表的每一个字段都进行匹配，展示在同一行。
+		exists 		: 	判断查询所得的结果中。是否有满足条件的记录存在。
+		select * from student 
+			where exists(select * from address 
+					where zz='郑州')；
+					
+		
