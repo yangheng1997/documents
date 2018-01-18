@@ -1,0 +1,22 @@
+	1、 查询是否已安装mysql
+			rpm -qa |grep mysql
+	2、 卸载原有mysql
+			yum remote mysql mysql-server mysql-libs mysql-common
+			rm -rf /var/lib/mysql
+			rm /etc/my.cnf
+	3、安装mysql下载源
+			将本地rpm包上传到服务器。执行命令。
+			yum localinstall mysql-community-release-el6-5.noarch.rpm 
+			
+			yum install mysql-community-server
+			
+	4、 启动
+			service mysqld start
+	5、 给root用户设置密码
+			/usr/bin/mysqladmin -u root password 'new-password'　　// 为root账号设置密码
+	
+	6、 远程连接授权
+			GRANT ALL PRIVILEGES ON *.* TO 'myuser'@'%' IDENTIFIED BY 'mypassword' WITH GRANT OPTION;
+			注意：'myuser'、'mypassword' 需要替换成实际的用户名和密码。
+
+			

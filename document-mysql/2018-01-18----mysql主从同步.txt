@@ -1,0 +1,76 @@
+	要求
+		1、主DB server和从DB server数据库的版本一致
+		2、主DB server和从DB server数据库数据名称一致
+		3、主DB server开启二进制日志,主DB server和从DB server的server_id都必须唯一
+		一、主服务器设置
+			1、 修改my.cnf文件
+					whereis my.cnf //查找文件地址
+					
+						在[mysqld]段下添加：
+						
+							binlog-do-db=db1
+							binlog-ignore-db=mysql
+							#启用二进制日志
+							log-bin=mysql-bin
+							#服务器唯一ID，一般取IP最后一段
+							server-id=134
+			
+			2、 重启mysql服务
+					service mysqld restart
+			
+			以下命令在mysql的命令窗口中执行
+			mysql -uroot -proot
+			
+			3、 建立账户并授权slave      
+			
+					在mysql命令行中：GRANT FILE ON *.* TO 'backup'@'%' IDENTIFIED BY '123456';
+					GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* to 'backup'@'%' identified by '123456'; 
+					
+					#一般不用root帐号，“%”表示所有客户端都可能连，只要帐号，密码正确，此处可用具体客户端IP代替，如192.168.145.226，加强安全。
+			
+			4、 刷新权限
+					 FLUSH PRIVILEGES;
+					 
+			5、 查看mysql现在有哪些用户
+					select user,host from mysql.user;
+				
+			6、 查询master的状态
+					 show master status;
+		
+		二、从服务器设置
+			1、 修改my.conf文件
+					[mysqld]
+					server-id=166
+			
+			2、 配置从服务器
+					mysql命令执行
+					
+	
+					mysql>change master to master_host='192.168.25.134',master_port=3306,master_user='backup',master_password='123456',master_log_file='mysql-bin.000001',master_log_pos=120
+					注意语句中间不要断开，master_port为mysql服务器端口号(无引号)，master_user为执行同步操作的数据库账户，“120”无单引号(此处的120就是show master status 中看到的position的值，这里的mysql-bin.000001就是file对应的值)。
+
+			3、 启动从服务器复制功能
+					Mysql>start slave; 
+					
+			4、 检查从服务器复制功能状态
+					mysql> show slave status;
+			
+					注：Slave_IO及Slave_SQL进程必须正常运行，即YES状态，否则都是错误的状态(如：其中一个NO均属错误)。
+					
+					
+	
+			错误处理：
+					如果出现此错误：
+					Fatal error: The slave I/O thread stops because master and slave have equal MySQL server UUIDs; these UUIDs must be different for replication to work.
+					因为是mysql是克隆的系统所以mysql的uuid是一样的，所以需要修改。
+					解决方法：
+					删除/var/lib/mysql/auto.cnf文件，重新启动服务。
+
+	
+	
+	
+	
+	
+	
+	
+	
