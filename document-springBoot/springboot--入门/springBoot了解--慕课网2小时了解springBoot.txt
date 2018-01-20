@@ -1,0 +1,142 @@
+springBoot	是springMVC的升级版。
+			1、简化配置。
+			2、是下一代框架。
+			
+微服务依赖于springCloud -springCloud依赖于SpringBoot
+
+@Controller		: 处理http请求
+@RestController	: Spring4之后新加的注解。是@Controller和@ResponseBody的组合。字符串转json。	
+@RequestMapping	: 配置url映射。 
+
+@PathVariable	: 获取url中的数据
+@RequestParam	: 获取请求参数的值
+@GetMapping		: 组合注解		@RequestMapping的简化版。 对应的还有PostMapping等
+
+
+
+
+Spring Data Jpa 	
+		
+			定义了一系列对象持久化的标准。  hibernate实现了这个标准
+			
+		
+		
+#########################################################################################
+	第一章:课程简介
+			1、 第一个sprringboot程序
+			2、 自定义属性配置
+			3、 Controller的使用
+			4、 spring-data-jpa
+			5、 事务管理
+			
+	
+	第二章:第一个springboot程序
+			1、 创建项目 girl	
+			2、 删除不需要文件
+							.mvn
+							mvnw
+							mvnw.cmd
+		
+			@SpringbootApplication	项目启动注解
+			application.properties	配置文件
+			
+			测试类需要的注解
+			@RunWith(SpringRunner.class)
+			@SpringBootTest
+			
+			springboot的启动方式
+				1、 通过springboot的main方法启动
+				2、 进入项目目录 。使用mvn spring-boot:run 启动
+				3、 进入target目录 java -jar jar包
+				
+	第三章:属性配置		
+				application.properties
+				application.yml
+			使用.yml。了解application.properties
+			1、 在yml中配置端口和路径前缀
+					server:
+						port: 8082
+						context-path: /girl
+			
+			2、 在yml文件中配置参数、bean
+					cupSize: b
+					age: 18
+					content: "cupSize: ${cupSize},age:${age}"
+					
+					@Component 注入spring
+					@ConfiguationProperties(profix = "girl")	获取前缀是girl的配置
+					可以通过添加前缀，并将配置信息导入实体类的形式将参数进行封装。
+				
+		
+			3、 切换开发环境和测试环境的配置文件。
+					application.yml
+							spring：
+								profiles:
+									active：dev	配置使用哪个文件。
+					application-dev.yml		测试环境下
+					application-prod.yml	生产环境下
+					
+			4、多种配置文件同时启动
+					使用java -jar 可以指定配置文件。 以此实现同时启动。
+		
+		
+	第四章:注解	
+			1、thymeleaf spring官方模板。
+			2、requestMapping 可以指定多个url
+			@RequestMapping(value={"/hello","/hi"})
+			@getMapping
+			@postMapping
+			@DeletlMapping
+			
+	第五章:spring Data jpa
+			1、 引入maven依赖。 
+			2、 配置文件中配置参数。
+			3、 在pojo中配置表和实体类的映射关系
+						@Entity
+						@Id
+						@CeneratedValue
+			4、 在dao层使用接口继承spring data jpa。 可以自定义接口中的方法， 但是要遵循spring data jpa的规则。
+						JpaRepository<类名，主键类型>
+						JpaRepository<Girl,Integer> 
+	
+	第六章:事务
+			@Transactionall
+			
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
