@@ -1,0 +1,8 @@
+	使用springMVC框架时,因为前台的请求有些是ajax,有些是请求一个页面.而如果这些请求执行过程中有异常没有catch,会向前台页面抛出.url响应为500,可能也会将异常信息抛到前台,这既不安全也不规范.
+	
+	处理方式
+		1、定义异常类PermissionExceptionResolver 实现HandlerEceptionResolver
+			复写方法， 并将该类注入spring进行统一管理
+			
+			实现方法 resolverException。可以在这个方法中获取请求的url. 
+			并且通过sfl4g的log方法打印日志。

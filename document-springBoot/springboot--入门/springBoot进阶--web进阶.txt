@@ -1,0 +1,35 @@
+web进阶
+	课程分解
+		1、 使用@Valid表单验证
+		2、 使用aop处理请求
+		3、 统一异常处理
+		4、 单元测试
+		
+		
+		第一节: @Valid表单验证
+			1、 在实体类中对要进行效验的字段加上@Min注解
+					@Min(value= 18,message="未成年，禁止入内")
+			2、 在controll中将接受参数改为接受对象。 并添加@Valid注解
+				public Girl girlAdd(@Valid Girl girl,BindingResult bindingResult){
+					if(bindingResult.hasErrors()){
+						sopm(bindingResult.getFieldError().getDefaultMessage());	//打印信息
+						return null;
+					}
+				}
+				
+		第二节：
+			AOP （切面）
+		
+				Aop是一种编程范式
+					与语言无关。是一种程序设计思想。
+					
+					面向切面	AOP		Aspect Oriented Programm
+					面向对象	OOP		Object Oriented Programm
+					面向过程	POP		Procedure Oriented Programming
+					
+				Aop 将通用的逻辑从业务逻辑中分离出来
+			
+			统一异常处理
+				
+				
+			
