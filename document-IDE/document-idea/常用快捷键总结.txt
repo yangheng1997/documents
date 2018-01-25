@@ -2,3 +2,4 @@ ctrl e 			显示最近打开的文件
 ctrl f			搜素
 ctrl r			替换
 ctrl o			重写父类的方法
+ctrl f12		查看当前类的方法
